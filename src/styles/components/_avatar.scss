@@ -1,0 +1,78 @@
+.rectangle-box {
+  height: 40px;
+  width: 40px;
+  min-width: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  .MuiIcon-root {
+    font-size: 18px;
+  }
+}
+
+.dashboardicon1 {
+  display: flex;
+  //position: absolute;
+  background: #F3EBFB;
+  color: white;
+  width: 50px;
+  height: 50px;
+   align-items: center;
+   justify-content: center;
+  border-radius: 50%;
+}
+.dashboardicon2 {
+  display: flex;
+  position: absolute;
+  background: #EAF8FE;
+  color: white;
+  width: 70px;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.dashboardicon3 {
+  display: flex;
+  position: absolute;
+  background: #FFF3EE;
+  color: white;
+  width: 70px;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.dashboardicon4 {
+  display: flex;
+  position: absolute;
+  background: #FFEEF1;
+  color: white;
+  width: 70px;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.dashboardicon5 {
+  display: flex;
+  position: absolute;
+  background: #FFF3EE;
+  color: white;
+  width: 70px;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.dashboardicon6 {
+  display: flex;
+  position: absolute;
+  background: #E4FFED;
+  color: white;
+  width: 70px;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}

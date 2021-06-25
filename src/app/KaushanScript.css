@@ -1,0 +1,19 @@
+
+.brandnamePrefix{
+	font-family: 'Kaushan Script', cursive;
+	font-size: 3rem;
+	color: #ffffff;
+}
+
+.brandnameDarkPrefix{
+	margin-top: 1rem;
+	font-family: 'Kaushan Script', cursive;
+	font-size: 3rem;
+	color: #112855;
+}
+
+.brandnameSuffix{
+	font-family: 'Kaushan Script', cursive;
+	font-size: 3rem;
+	color: #F58C29;
+}

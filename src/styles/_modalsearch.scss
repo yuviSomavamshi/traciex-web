@@ -1,0 +1,131 @@
+.scroll {
+    margin:4px, 4px;
+    padding:4px;
+    background-color: rgb(200, 209, 200);
+    width: 500px;
+    height: 110px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}
+
+.modalhead{
+  align-items: center;
+  text-align: center;
+  color: #2f6bb4;
+  margin-top:30px;
+  font-size: 20px;
+}
+
+.viewdatastyle{
+    display:flex;
+    flex-flow:row wrap ;
+    text-align:center;
+    margin: 25px;
+    justify-content:flex-start;
+    height:200px;
+    overflow:auto;
+}
+.searchwidth{
+    width:500px;
+}
+
+
+
+.dashboardgraph{
+    width:100%;
+    height:350px;
+}
+
+
+::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: transparent; 
+    border-radius: 0px;
+  }
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: transparent; 
+    border-radius: 0px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: transparent; 
+  }
+   
+  thead, tbody { display: block; }
+
+tbody {
+    height: 100px;       /* Just for the demo          */
+  
+}
+
+
+table {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+}
+table, th {
+    border: 1px solid white;
+    padding: 5px;
+  }
+  .tdatacolorborder {
+    border: 1px solid white;
+    padding: 5px;
+
+  }
+table thead {
+    /* head takes the height it requires, 
+    and it's not scaled when table is resized */
+    flex: 0 0 auto;
+    width: calc(100% - 0.9em);
+}
+table tbody {
+    /* body takes all the remaining available space */
+    flex: 1 1 auto;
+    display: block;
+    overflow-y: scroll;
+}
+table tbody tr {
+    width: 100%;
+}
+table thead, table tbody tr {
+    display: table;
+    table-layout: fixed;
+}
+
+.tablecolor:nth-child(odd)
+{
+    background-color: #f2f2f2;
+    color: rgba(74, 70, 109, 0.87);
+}
+.tablecolor:nth-child(even)
+{
+    background-color: lightgrey;
+    color: rgba(74, 70, 109, 0.87);
+}
+
+.MuiGrid-spacing-xs-1 {
+    width: calc(200px + 8px)!important;
+    margin: 14px!important;
+}
+
+.apexcharts-zoom-icon, .apexcharts-reset-icon, .apexcharts-menu-icon {
+    transform: scale(0.00)!important;
+}
+
+.otpinput{
+    width:70px;
+}
+.otpinput input{
+    width:40px!important;
+    height :40px;
+    border-radius: 50px;
+}
