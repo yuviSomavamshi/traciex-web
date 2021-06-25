@@ -44,12 +44,22 @@ axios.interceptors.response.use(
               console.log(err);
             });
         } else {
-          alert("Your Session Has Expired, Please Login again");
-          console.log("Refresh token is expired", tokenParts.exp, now);
+          const token = localStorage.getItem("jwt_token");
+          if (token != null) {
+            localStorage.removeItem("jwt_token");
+            localStorage.removeItem("refreshToken");
+            alert("Your Session Has Expired, Please Login again");
+            console.log("Refresh token is expired", tokenParts.exp, now);
+          }
           window.location.href = "/login";
         }
       } else {
-        alert("Your Session Has Expired, Please Login again");
+        const token = localStorage.getItem("jwt_token");
+        if (token != null) {
+          localStorage.removeItem("jwt_token");
+          localStorage.removeItem("refreshToken");
+          alert("Your Session Has Expired, Please Login again");
+        }
         console.log("Refresh token not available.");
         window.location.href = "/login";
       }
