@@ -98,7 +98,7 @@ const Toolbar = ({ className, handleClickOpen, handleTokenSearch, handleTokenCle
               </Button>
             </Grid>
           )}
-           {rest.isRamanReaderScreen && (
+          {rest.isRamanReaderScreen && (
             <Grid item style={{ paddingBottom: "20px" }}>
               <Button
                 color="primary"

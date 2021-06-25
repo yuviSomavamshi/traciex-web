@@ -85,7 +85,6 @@ const Results = ({ className, ramanReader, ...rest }) => {
       <Card className={clsx(classes.root, className)} {...rest}>
         <PerfectScrollbar>
           <Box minWidth={1050}>
-
             <Table id="printTable">
               <TableHead>
                 <TableRow>

@@ -144,14 +144,7 @@ class Changepasswordpage extends Component {
   };
 
   render() {
-    let {
-      showPassword,
-      showConfirmPassword,
-      showOldPassword,
-      openSnackBar,
-      success,
-      message
-    } = this.state;
+    let { showPassword, showConfirmPassword, showOldPassword, openSnackBar, success, message } = this.state;
     let { classes, loading } = this.props;
     let severity = success ? "success" : "error";
 
@@ -279,7 +272,6 @@ class Changepasswordpage extends Component {
                   <CircularProgress size={24} className={classes.buttonProgress} />
                 )}
               </div>
-
             </ValidatorForm>
           </Card>
 

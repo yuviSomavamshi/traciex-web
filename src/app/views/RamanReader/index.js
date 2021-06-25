@@ -170,7 +170,7 @@ class RamanReader extends Component {
               page={page}
               handleLimitChange={this.handleLimitChange}
               handlePageChange={this.handlePageChange}
-              handleDeleteRamanreader={this. handleDeleteRamanreader}
+              handleDeleteRamanreader={this.handleDeleteRamanreader}
               handleOrderChange={this.handleOrderChange}
               handleSortByChange={this.handleSortByChange}
             />
@@ -212,7 +212,7 @@ class RamanReader extends Component {
 const mapStateToProps = (state) => ({
   getRamanreaderCodesList: PropTypes.func.isRequired,
   deleteRamanreadercode: PropTypes.func.isRequired,
-  ramanReader: state.ramanReader,
+  ramanReader: state.ramanReader
 });
 
 export default withStyles({}, { withTheme: true })(connect(mapStateToProps, { getRamanreaderCodesList, deleteRamanreadercode })(RamanReader));
