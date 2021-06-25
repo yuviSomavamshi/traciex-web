@@ -1,4 +1,6 @@
 start=`date +%s`
+npm i --development
+npm i --production
 npm run prettify
 
 cd ui;
