@@ -1,9 +1,7 @@
 import React from "react";
 import { Accordion, Card, Button } from "react-bootstrap";
 
-const tabs = [
-  { id: 1, label: "Click here to view", description: "Content of Tab 1" }
-];
+const tabs = [{ id: 1, label: "Click here to view", description: "Content of Tab 1" }];
 
 export default function AccordionClass() {
   return (

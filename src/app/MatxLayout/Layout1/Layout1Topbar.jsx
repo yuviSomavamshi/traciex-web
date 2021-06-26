@@ -94,63 +94,63 @@ class Layout1Topbar extends Component {
     const topbarTheme = settings.themes[settings.layout1Settings.topbar.theme] || theme;
     return (
       <>
-          <div className="topbar">
-            <div className={`topbar-hold ${className}`} style={Object.assign({}, { backgroundColor: topbarTheme.palette.primary.main }, style)}>
-              <div className="flex flex-space-between flex-middle h-100">
-                <Grid container>
-                  <Grid item xs={12}>
-                    <Grid container spacing={0} style={{ justifyContent: "space-around" }}>
-                      <Grid key="certis" item>
-                        <img alt="Logo" src="/assets/images/certis-logo.png" height="30" />
-                      </Grid>
-                      <Grid key="healthx" item>
-                        <img alt="Logo" src="/assets/images/HealthXLogo1x.png" height="35" />
-                      </Grid>
-                      <Grid key="silverfactory" item>
-                        {APPNAME_PREFIX == "Tracie" && <img alt="Logo" src="/assets/images/silverfactory.jpeg" height="35" />}
-                      </Grid>
+        <div className="topbar">
+          <div className={`topbar-hold ${className}`} style={Object.assign({}, { backgroundColor: topbarTheme.palette.primary.main }, style)}>
+            <div className="flex flex-space-between flex-middle h-100">
+              <Grid container>
+                <Grid item xs={12}>
+                  <Grid container spacing={0} style={{ justifyContent: "space-around" }}>
+                    <Grid key="certis" item>
+                      <img alt="Logo" src="/assets/images/certis-logo.png" height="30" />
+                    </Grid>
+                    <Grid key="healthx" item>
+                      <img alt="Logo" src="/assets/images/HealthXLogo1x.png" height="35" />
+                    </Grid>
+                    <Grid key="silverfactory" item>
+                      {APPNAME_PREFIX == "Tracie" && <img alt="Logo" src="/assets/images/silverfactory.jpeg" height="35" />}
+                    </Grid>
 
-                      <Grid key="menu" item>
-                        <MatxMenu
-                          menuButton={
-                            <div className="d-flex flex-row  justify-content-between align-items-end ">
-                              <span>
-                                <strong>{email}</strong>
-                              </span>
-                              <div className="MuiAvatar-root-107 MuiAvatar-circle-109 cursor-pointer MuiAvatar-colorDefault-108">
-                                <img
-                                  className="mx-2 align-middle circular-image-small cursor-pointer"
-                                  src="/assets/images/faces/sampleimg.jpg"
-                                  alt="user"
-                                />
-                              </div>
+                    <Grid key="menu" item>
+                      <MatxMenu
+                        menuButton={
+                          <div className="d-flex flex-row  justify-content-between align-items-end ">
+                            <span>
+                              <strong>{email}</strong>
+                            </span>
+                            <div className="MuiAvatar-root-107 MuiAvatar-circle-109 cursor-pointer MuiAvatar-colorDefault-108">
+                              <img
+                                className="mx-2 align-middle circular-image-small cursor-pointer"
+                                src="/assets/images/faces/sampleimg.jpg"
+                                alt="user"
+                              />
                             </div>
-                          }
-                        >
-                          <MenuItem onClick={this.handleClickOpen}>
-                            <Icon> lock </Icon>
-                            <span className="pl-4"> Change Password </span>
-                          </MenuItem>
+                          </div>
+                        }
+                      >
+                        <MenuItem onClick={this.handleClickOpen}>
+                          <Icon> lock </Icon>
+                          <span className="pl-4"> Change Password </span>
+                        </MenuItem>
 
-                          <MenuItem onClick={this.handleSignOut} className={classes.menuItem}>
-                            <Icon> power_settings_new </Icon>
-                            <span className="pl-4"> Logout </span>
-                          </MenuItem>
-                        </MatxMenu>
-                      </Grid>
+                        <MenuItem onClick={this.handleSignOut} className={classes.menuItem}>
+                          <Icon> power_settings_new </Icon>
+                          <span className="pl-4"> Logout </span>
+                        </MenuItem>
+                      </MatxMenu>
                     </Grid>
                   </Grid>
                 </Grid>
-              </div>
+              </Grid>
             </div>
           </div>
-          <div>
-            <Dialog onClose={this.handleClose} open={open}>
-              <div>
-                <Changepasswordpage handleClose={this.handleClose} handlePasswordSubmit={this.handlePasswordSubmit} />
-              </div>
-            </Dialog>
-          </div>
+        </div>
+        <div>
+          <Dialog onClose={this.handleClose} open={open}>
+            <div>
+              <Changepasswordpage handleClose={this.handleClose} handlePasswordSubmit={this.handlePasswordSubmit} />
+            </div>
+          </Dialog>
+        </div>
       </>
     );
   }

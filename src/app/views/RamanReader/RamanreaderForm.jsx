@@ -20,7 +20,7 @@ class RamanreaderForm extends Component {
     files: null,
     message: null,
     severity: null,
-    openSnackBar: false,
+    openSnackBar: false
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -29,7 +29,7 @@ class RamanreaderForm extends Component {
         ...this.state,
         openSnackBar: true,
         message: nextProps.ramanReader.message,
-        severity: nextProps.ramanReader.severity,
+        severity: nextProps.ramanReader.severity
       });
       if (nextProps.ramanReader.severity == "success") {
         setTimeout(() => {

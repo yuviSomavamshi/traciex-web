@@ -39,7 +39,7 @@ const RamanReaderReducer = function (state = initialState, action) {
       return {
         ...state,
         message: action.message,
-        severity: action.severity,
+        severity: action.severity
       };
     }
     default: {
