@@ -42,7 +42,8 @@ class JwtAuthService {
               role: res.data.role,
               displayName: res.data.name,
               token: res.data.jwtToken,
-              refreshToken: res.data.refreshToken
+              refreshToken: res.data.refreshToken,
+              csrfToken: res.data.csrfToken
             });
           } else {
             reject(res.data);
@@ -54,7 +55,7 @@ class JwtAuthService {
     }).then((data) => {
       // Login successful
       // Save token
-      this.setSession(data.token, data.refreshToken);
+      this.setSession(data.token, data.refreshToken, data.csrfToken);
       // Set user
       this.setUser(data);
       return data;
@@ -82,14 +83,17 @@ class JwtAuthService {
   };
 
   // Set token to all http request header, so you don't need to attach everytime
-  setSession = (token, refreshToken) => {
+  setSession = (token, refreshToken, csrfToken) => {
     if (token) {
       localStorage.setItem("jwt_token", token);
       localStorage.setItem("refreshToken", refreshToken);
+      localStorage.setItem("csrfToken", csrfToken);
       axios.interceptors.request.use(
         (config) => {
           const token = localStorage.getItem("jwt_token");
           config.headers["Authorization"] = "Bearer " + token;
+          const csrfToken = localStorage.getItem("csrfToken");
+          config.headers["X-CSRF-Token"] =  csrfToken;
           return config;
         },
         (error) => {
@@ -99,7 +103,9 @@ class JwtAuthService {
     } else {
       localStorage.removeItem("jwt_token");
       localStorage.removeItem("auth_user");
+      localStorage.removeItem("csrfToken")
       delete axios.defaults.headers.common["Authorization"];
+      delete axios.defaults.headers.common["X-CSRF-Token"];
     }
   };
 
