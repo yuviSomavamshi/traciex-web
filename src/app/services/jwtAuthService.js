@@ -93,7 +93,7 @@ class JwtAuthService {
           const token = localStorage.getItem("jwt_token");
           config.headers["Authorization"] = "Bearer " + token;
           const csrfToken = localStorage.getItem("csrfToken");
-          config.headers["Authorization"] = "Bearer " + csrfToken;
+          config.headers["X-CSRF-Token"] =  csrfToken;
           return config;
         },
         (error) => {
@@ -105,6 +105,7 @@ class JwtAuthService {
       localStorage.removeItem("auth_user");
       localStorage.removeItem("csrfToken")
       delete axios.defaults.headers.common["Authorization"];
+      delete axios.defaults.headers.common["X-CSRF-Token"];
     }
   };
 
