@@ -140,8 +140,8 @@ class Dashboard1 extends Component {
             style: {
               colors: "#ffa600"
             },
-              formatter: function (value) {
-              return value.toFixed(0)
+            formatter: function (value) {
+              return value.toFixed(0);
             }
           },
           title: {
