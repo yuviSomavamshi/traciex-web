@@ -139,10 +139,10 @@ class Dashboard1 extends Component {
           labels: {
             style: {
               colors: "#ffa600"
+            },
+              formatter: function (value) {
+              return value.toFixed(0)
             }
-            //   formatter: function (value) {
-            //   return value.toFixed(0)
-            // },
           },
           title: {
             text: "Average Time Taken (in Secs)",
@@ -375,7 +375,7 @@ class Dashboard1 extends Component {
                 <i className="fa fa-wheelchair fa-2x text-green" aria-hidden="true"></i>
               </div>
               <div className=" d-flex   justify-content-between alignt-items-center">
-                <p className="text-primary-p">Patient Registrations</p>
+                <p className="text-primary-p">Users</p>
                 <h2 className="font-weight-bold ">{tc.patients}</h2>
               </div>
             </div>
