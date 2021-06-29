@@ -456,6 +456,11 @@ class Dashboard1 extends Component {
                   <h4>Negative</h4>
                   <h5>{tc.results && tc.results.negative}</h5>
                 </div>
+
+                <div className="cardinvalid">
+                  <h4>Invalid</h4>
+                  <h5>{tc.results && tc.results.invalid}</h5>
+                </div>
               </div>
             </div>
           </div>
