@@ -103,7 +103,7 @@ class JwtAuthService {
     } else {
       localStorage.removeItem("jwt_token");
       localStorage.removeItem("auth_user");
-      localStorage.removeItem("csrfToken")
+      localStorage.removeItem("csrfToken");
       delete axios.defaults.headers.common["Authorization"];
       delete axios.defaults.headers.common["X-CSRF-Token"];
     }

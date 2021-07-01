@@ -150,35 +150,45 @@
 	background: #d1ecf1;
 	color: #35a4ba;
 	text-align: center;
-	padding: 10px;
+	padding: 5px;
 	border-radius: 5px;
-	font-size: 12px;
+	font-size: 8px;
+	// padding: 10px;
+	// border-radius: 5px;
+	// font-size: 12px;
 }
 .card2 {
 	background: #d2f9ee;
 	color: #38e1b0;
 	text-align: center;
-	padding: 10px;
+	padding: 5px;
 	border-radius: 5px;
-	font-size: 12px;
+	font-size: 8px;
 }
 .card4 {
 	background: #fddcdf;
 	color: #f65a6f;
 	text-align: center;
-	padding: 10px;
+	padding: 5px;
 	border-radius: 5px;
-	font-size: 12px;
+	font-size: 8px;
 }
 .cardinvalid {
 	background: #C9C9C9;
 	color: #7D7D7D;
 	text-align: center;
-	padding: 10px;
+	padding: 5px;
 	border-radius: 5px;
-	font-size: 12px;
+	font-size: 8px;
 }
-
+.cardpending{
+	background: rgb(247, 228, 173);
+	color: #FF8C00;
+	text-align: center;
+	padding: 5px;
+	border-radius: 5px;
+	font-size: 8px;
+}
 
 .text-title {
 	color: #2e4a66;

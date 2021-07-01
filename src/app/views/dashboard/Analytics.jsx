@@ -443,23 +443,28 @@ class Dashboard1 extends Component {
 
               <div className="charts__right__cards">
                 <div className="card1">
-                  <h4>Total Tests</h4>
-                  <h5>{tc.results && tc.results.totalHits}</h5>
+                  <h5>Total Tests</h5>
+                  <h6>{tc.results && tc.results.totalHits}</h6>
                 </div>
 
                 <div className="card4">
-                  <h4>Positive</h4>
-                  <h5>{tc.results && tc.results.positive}</h5>
+                  <h5>Positive</h5>
+                  <h6>{tc.results && tc.results.positive}</h6>
                 </div>
 
                 <div className="card2">
-                  <h4>Negative</h4>
-                  <h5>{tc.results && tc.results.negative}</h5>
+                  <h5>Negative</h5>
+                  <h6>{tc.results && tc.results.negative}</h6>
                 </div>
 
                 <div className="cardinvalid">
-                  <h4>Invalid</h4>
-                  <h5>{tc.results && tc.results.invalid}</h5>
+                  <h5>Invalid</h5>
+                  <h6>{tc.results && tc.results.invalid}</h6>
+                </div>
+
+                <div className="cardpending">
+                  <h5>Pending</h5>
+                  <h6>{tc.results && tc.results.pending}</h6>
                 </div>
               </div>
             </div>
