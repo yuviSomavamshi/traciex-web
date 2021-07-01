@@ -457,15 +457,19 @@ class Dashboard1 extends Component {
                   <h6>{tc.results && tc.results.negative}</h6>
                 </div>
 
+                { tc.results.invalid > 0 ?
                 <div className="cardinvalid">
                   <h5>Invalid</h5>
                   <h6>{tc.results && tc.results.invalid}</h6>
                 </div>
+                :null}
 
+                { tc.results.pending > 0 ?
                 <div className="cardpending">
                   <h5>Pending</h5>
                   <h6>{tc.results && tc.results.pending}</h6>
                 </div>
+                :null}
               </div>
             </div>
           </div>
