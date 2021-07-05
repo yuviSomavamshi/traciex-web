@@ -5,13 +5,13 @@ export const DELETE_RAMANREADER_CODE = "DELETE_RAMANREADER_CODE";
 export const RAMANREADER_CODE_LOADING = "RAMANREADER_CODE_LOADING";
 export const UPLOAD_RAMANREADER = "UPLOAD_RAMANREADER";
 
-const token = localStorage.getItem("jwt_token");
 export const getRamanreaderCodesList =
   (searchToken = "", page = 1, size = 10, order = "desc", sortBy = "createdAt") =>
   (dispatch) => {
     dispatch({
       type: RAMANREADER_CODE_LOADING
     });
+    const token = localStorage.getItem("jwt_token");
     const headers = {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token
@@ -34,6 +34,7 @@ export const deleteRamanreadercode = (id) => {
       message: null,
       severity: null
     });
+    const token = localStorage.getItem("jwt_token");
     const headers = {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token
@@ -62,6 +63,7 @@ export const deleteRamanreadercode = (id) => {
 
 export const uploadRamanreadercodes = (formData) => {
   return (dispatch) => {
+    const token = localStorage.getItem("jwt_token");
     const headers = {
       "content-type": "multipart/form-data",
       Authorization: "Bearer " + token
@@ -78,11 +80,12 @@ export const uploadRamanreadercodes = (formData) => {
         });
       })
       .catch((err) => {
-        dispatch({
-          type: UPLOAD_RAMANREADER,
-          message: err.response.data.message,
-          severity: "error"
-        });
+        if (err.response)
+          dispatch({
+            type: UPLOAD_RAMANREADER,
+            message: err.response.data.message,
+            severity: "error"
+          });
       });
   };
 };

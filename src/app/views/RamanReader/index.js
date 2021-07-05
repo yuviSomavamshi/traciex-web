@@ -105,7 +105,7 @@ class RamanReader extends Component {
   };
 
   handleDeleteRamanreader = (ramanreader) => {
-    this.props.deleteRamanreadercode(ramanreader.code);
+    this.props.deleteRamanreadercode(ramanreader.filename);
   };
 
   handleClickOpen = (event) => {

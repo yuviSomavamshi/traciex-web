@@ -17,12 +17,12 @@ axios.interceptors.response.use(
     const originalRequest = error.config;
 
     // Prevent infinite loops
-    if (error.response.status === 401 && originalRequest.url === url + "/accounts/refresh-token") {
+    if (error.response && error.response.status === 401 && originalRequest.url === url + "/accounts/refresh-token") {
       window.location.href = "/login";
       return Promise.reject(error);
     }
 
-    if (error.response.status === 401 && error.response.statusText === "Unauthorized") {
+    if (error.response && error.response.status === 401 && error.response.statusText === "Unauthorized") {
       const token = localStorage.getItem("jwt_token");
       const refreshToken = localStorage.getItem("refreshToken");
       if (token) {

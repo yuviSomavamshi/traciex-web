@@ -5,13 +5,13 @@ export const DELETE_BAR_CODE = "DELETE_BAR_CODE";
 export const BAR_CODE_LOADING = "BAR_CODE_LOADING";
 export const UPLOAD_BARCODE = "UPLOAD_BARCODE";
 
-const token = localStorage.getItem("jwt_token");
 export const getBarCodesList =
   (searchToken = "", page = 1, size = 10, order = "desc", sortBy = "createdAt") =>
   (dispatch) => {
     dispatch({
       type: BAR_CODE_LOADING
     });
+    const token = localStorage.getItem("jwt_token");
     const headers = {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token
@@ -34,6 +34,7 @@ export const deleteBarcode = (id) => {
       message: null,
       severity: null
     });
+    const token = localStorage.getItem("jwt_token");
     const headers = {
       "Content-Type": "application/json",
       Authorization: "Bearer " + token
@@ -62,6 +63,7 @@ export const deleteBarcode = (id) => {
 
 export const uploadBarcodes = (formData) => {
   return (dispatch) => {
+    const token = localStorage.getItem("jwt_token");
     const headers = {
       "content-type": "multipart/form-data",
       Authorization: "Bearer " + token

@@ -3,6 +3,17 @@ import { Icon } from "@material-ui/core";
 
 import "./Dropzone.css";
 
+const VALID_MIMETYPES = [
+  ".csv",
+  "text/csv",
+  "application/vnd.ms-excel",
+  "application/csv",
+  "text/x-csv",
+  "application/x-csv",
+  "text/comma-separated-values",
+  "text/x-comma-separated-values"
+];
+
 const Dropzone = (props) => {
   const fileInputRef = useRef();
   const modalImageRef = useRef();
@@ -63,7 +74,7 @@ const Dropzone = (props) => {
 
   const handleFiles = (files) => {
     for (let i = 0; i < files.length; i++) {
-      if (validateFile(files[i])) {
+      if (VALID_MIMETYPES.includes(files[i].type)) {
         props.setBtnVisible(true, files[i]);
         setSelectedFiles((prevArray) => [files[i]]);
       } else {
@@ -73,14 +84,6 @@ const Dropzone = (props) => {
         setUnsupportedFiles((prevArray) => [files[i]]);
       }
     }
-  };
-
-  const validateFile = (file) => {
-    const validTypes = [".csv,text/csv","application/vnd.ms-excel"];
-    if (validTypes.indexOf(file.type) === -1) {
-      return false;
-    }
-    return true;
   };
 
   const fileSize = (size) => {
@@ -158,7 +161,14 @@ const Dropzone = (props) => {
             </div>
             Drag and Drop Model file in csv Format (.csv) or Select a file from a folder.
           </div>
-          <input ref={fileInputRef} className="file-input" type="file" onChange={filesSelected}  accept=".csv,text/csv,application/vnd.ms-excel"  maxFiles="1" />
+          <input
+            ref={fileInputRef}
+            className="file-input"
+            type="file"
+            onChange={filesSelected}
+            accept=".csv,text/csv,application/vnd.ms-excel"
+            maxFiles="1"
+          />
         </div>
         <div className="file-display-container">
           {validFiles.map((data, i) => (
