@@ -10,7 +10,7 @@ export const silverFactoryNavigations = [
     icon: "control_camera"
   },
   {
-    name: "Raman Reader",
+    name: "Raman Results",
     path: "/raman-reader",
     icon: "folderOpen"
   }

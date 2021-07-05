@@ -101,7 +101,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                       Filename
                     </TableSortLabel>
                   </TableCell>
-                  <TableCell
+                  {/* <TableCell
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -112,7 +112,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                     <TableSortLabel active={sortBy === "status"} direction={order} onClick={createSortHandler("status")}>
                       Status
                     </TableSortLabel>
-                  </TableCell>
+                  </TableCell> */}
                   <TableCell
                     style={{
                       whiteSpace: "normal",
@@ -150,7 +150,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                           </Typography>
                         </Box>
                       </TableCell>
-                      <TableCell
+                      {/* <TableCell
                         style={{
                           whiteSpace: "normal",
                           wordWrap: "break-word",
@@ -163,7 +163,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                           style={{ backgroundColor: getStatusColor(ramanReader.status) }}
                           label={getStatus(ramanReader.status)}
                         />
-                      </TableCell>
+                      </TableCell> */}
                       <TableCell>
                         {ramanReader.status == 0 ? (
                           <Button
