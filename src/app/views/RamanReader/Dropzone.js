@@ -76,7 +76,7 @@ const Dropzone = (props) => {
   };
 
   const validateFile = (file) => {
-    const validTypes = [".csv"];
+    const validTypes = [".csv,text/csv","application/vnd.ms-excel"];
     if (validTypes.indexOf(file.type) === -1) {
       return false;
     }
@@ -158,7 +158,7 @@ const Dropzone = (props) => {
             </div>
             Drag and Drop Model file in csv Format (.csv) or Select a file from a folder.
           </div>
-          <input ref={fileInputRef} className="file-input" type="file" onChange={filesSelected} accept=".csv" maxFiles="1" />
+          <input ref={fileInputRef} className="file-input" type="file" onChange={filesSelected}  accept=".csv,text/csv,application/vnd.ms-excel"  maxFiles="1" />
         </div>
         <div className="file-display-container">
           {validFiles.map((data, i) => (
