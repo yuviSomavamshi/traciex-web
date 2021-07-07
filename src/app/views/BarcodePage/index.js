@@ -106,7 +106,7 @@ class BarcodePage extends Component {
   };
 
   handleDeleteBarcode = (barcode) => {
-    this.props.deleteBarcode(barcode.code);
+    this.props.deleteBarcode(barcode.originalFileName);
   };
 
   handleClickOpen = (event) => {
