@@ -66,7 +66,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
               <TableHead>
                 <TableRow>
                   <TableCell
-                  align="center"
+                    align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -80,7 +80,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                     </TableSortLabel>
                   </TableCell>
                   <TableCell
-                  align="center"
+                    align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -91,7 +91,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                     Customer
                   </TableCell>
                   <TableCell
-                  align="center"
+                    align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -104,7 +104,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                     </TableSortLabel>
                   </TableCell>
                   <TableCell
-                  align="center"
+                    align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -113,15 +113,15 @@ const Results = ({ className, ramanReader, ...rest }) => {
                       color: "#112855"
                     }}
                   >
-                      Location
+                    Location
                   </TableCell>
                   <TableCell
-                  align="center"
+                    align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
                       width: "15%",
-                      color: "#112855",
+                      color: "#112855"
                     }}
                   >
                     Actions
@@ -155,7 +155,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                         </Box>
                       </TableCell>
                       <TableCell
-                      align="center"
+                        align="center"
                         style={{
                           whiteSpace: "normal",
                           wordWrap: "break-word",
@@ -165,7 +165,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                         {ramanReader.customer}
                       </TableCell>
                       <TableCell
-                      align="center"
+                        align="center"
                         style={{
                           whiteSpace: "normal",
                           wordWrap: "break-word",
@@ -185,7 +185,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                         </Typography>
                       </TableCell>
                       <TableCell
-                      align="center"
+                        align="center"
                         style={{
                           whiteSpace: "normal",
                           wordWrap: "break-word",
@@ -196,8 +196,8 @@ const Results = ({ className, ramanReader, ...rest }) => {
                       </TableCell>
                       <TableCell align="center">
                         {ramanReader.status == 0 ? (
-                          <div style={{align:"center"}}>
-                            <IconButton style={{color: "#cc0000"}} component="span"  onClick={handleDeleteRamanreaderView.bind(null, ramanReader)}>
+                          <div style={{ align: "center" }}>
+                            <IconButton style={{ color: "#cc0000" }} component="span" onClick={handleDeleteRamanreaderView.bind(null, ramanReader)}>
                               <Icon>delete</Icon>
                             </IconButton>
                             <IconButton color="primary" aria-label="upload picture" component="span">
@@ -205,7 +205,6 @@ const Results = ({ className, ramanReader, ...rest }) => {
                             </IconButton>
                           </div>
                         ) : null}
-
                       </TableCell>
                     </TableRow>
                   );
