@@ -17,7 +17,8 @@ import {
   TablePagination,
   TableRow,
   Typography,
-  makeStyles
+  makeStyles,
+  IconButton
 } from "@material-ui/core";
 import { Modal } from "antd";
 
@@ -97,7 +98,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                       color: "#112855"
                     }}
                   >
-                    <TableSortLabel active={sortBy === "code"} direction={order} onClick={createSortHandler("code")}>
+                    <TableSortLabel active={sortBy === "filename"} direction={order} onClick={createSortHandler("filename")}>
                       Filename
                     </TableSortLabel>
                   </TableCell>
@@ -107,6 +108,40 @@ const Results = ({ className, ramanReader, ...rest }) => {
                       wordWrap: "break-word",
                       width: "15%",
                       color: "#112855"
+                    }}
+                  >
+                    Customer
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      whiteSpace: "normal",
+                      wordWrap: "break-word",
+                      width: "15%",
+                      color: "#112855"
+                    }}
+                  >
+                    <TableSortLabel active={sortBy === "createdAt"} direction={order} onClick={createSortHandler("createdAt")}>
+                      Created Time
+                    </TableSortLabel>
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      whiteSpace: "normal",
+                      wordWrap: "break-word",
+                      paddingLeft: "20px",
+                      width: "15%",
+                      color: "#112855"
+                    }}
+                  >
+                      Location
+                  </TableCell>
+                  <TableCell
+                    style={{
+                      whiteSpace: "normal",
+                      wordWrap: "break-word",
+                      width: "15%",
+                      color: "#112855",
+                      paddingLeft:"10px"
                     }}
                   >
                     Actions
@@ -131,27 +166,87 @@ const Results = ({ className, ramanReader, ...rest }) => {
                             variant="body1"
                             style={{
                               paddingTop: "10px",
-                              paddingBottom: "10px"
+                              paddingBottom: "10px",
+                              fontSize: "14px"
                             }}
                           >
                             {ramanReader.filename}
                           </Typography>
                         </Box>
                       </TableCell>
-                      <TableCell>
+                      <TableCell
+                        style={{
+                          whiteSpace: "normal",
+                          wordWrap: "break-word",
+                          width: "15%"
+                        }}
+                      >
+                        {ramanReader.customer}
+                      </TableCell>
+                      <TableCell
+                        style={{
+                          whiteSpace: "normal",
+                          wordWrap: "break-word",
+                          width: "15%"
+                        }}
+                      >
+                        <Typography
+                          color="textPrimary"
+                          variant="body1"
+                          style={{
+                            paddingTop: "10px",
+                            paddingBottom: "10px",
+                            fontSize: "14px"
+                          }}
+                        >
+                          {moment(ramanReader.createdAt).format("DD-MMM-YYYY HH:mm:ss")}
+                        </Typography>
+                      </TableCell>
+                      <TableCell
+                        style={{
+                          whiteSpace: "normal",
+                          wordWrap: "break-word",
+                          width: "15%"
+                        }}
+                      >
+                        {ramanReader.location}
+                      </TableCell>
+                      <TableCell align="center">
                         {ramanReader.status == 0 ? (
-                          <Button
+                          <div style={{display: "flex"}}>
+                            <IconButton style={{color: "#cc0000"}} component="span"  onClick={handleDeleteRamanreaderView.bind(null, ramanReader)}>
+                              <Icon>delete</Icon>
+                            </IconButton>
+                            <IconButton color="primary" aria-label="upload picture" component="span">
+                              <Icon>download</Icon>
+                            </IconButton>
+                          {/* <Button 
+                            size="small"
+                            startIcon={<Icon>delete</Icon>}
                             style={{
                               color: "white",
-                              backgroundColor: "#cc0000"
+                              backgroundColor: "#cc0000",
                             }}
                             variant="contained"
                             onClick={handleDeleteRamanreaderView.bind(null, ramanReader)}
                           >
-                            <Icon>delete</Icon>
-                            <span className="pl-8 capitalize">Delete</span>
-                          </Button>
+                          
+                          </Button> &nbsp;
+                          <Button
+                          size="small"
+                          startIcon={<Icon>download</Icon>}
+                          style={{
+                            color: "white",
+                            backgroundColor: ""
+                          }}
+                          variant="contained"
+                          onClick={handleDeleteRamanreaderView.bind(null, ramanReader)}
+                        >
+                       
+                        </Button> */}
+                        </div>
                         ) : null}
+
                       </TableCell>
                     </TableRow>
                   );

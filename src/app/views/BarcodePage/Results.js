@@ -105,6 +105,50 @@ const Results = ({ className, barCode, ...rest }) => {
                       Barcode
                     </TableSortLabel>
                   </TableCell>
+                  {/* <TableCell
+                    style={{
+                      whiteSpace: "normal",
+                      wordWrap: "break-word",
+                      paddingLeft: "20px",
+                      width: "15%",
+                      color: "#112855"
+                    }}
+                  >
+                    <TableSortLabel active={sortBy === "batchId"} direction={order} onClick={createSortHandler("batchId")}>
+                      Filename
+                    </TableSortLabel>
+                  </TableCell> 
+                  <TableCell
+                    style={{
+                      whiteSpace: "normal",
+                      wordWrap: "break-word",
+                      width: "15%",
+                      color: "#112855"
+                    }}
+                  >
+                    Valid
+                  </TableCell> 
+                  <TableCell
+                    style={{
+                      whiteSpace: "normal",
+                      wordWrap: "break-word",
+                      width: "15%",
+                      color: "#112855"
+                    }}
+                  >
+                    Invalid
+                  </TableCell> 
+                  <TableCell
+                    style={{
+                      whiteSpace: "normal",
+                      wordWrap: "break-word",
+                      width: "15%",
+                      color: "#112855"
+                    }}
+                  >
+                    Duplicates
+                  </TableCell> */}
+                  
                   <TableCell
                     style={{
                       whiteSpace: "normal",
