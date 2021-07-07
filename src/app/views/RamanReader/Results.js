@@ -57,30 +57,6 @@ const Results = ({ className, ramanReader, ...rest }) => {
     setOpenReports(!openReports);
   };
 
-  const getStatusColor = (status) => {
-    let result = "";
-    if (status == 0) {
-      result = "green";
-    } else if (status == 1) {
-      result = "red";
-    } else {
-      result = "black";
-    }
-    return result;
-  };
-
-  const getStatus = (status) => {
-    let result = "";
-    if (status == 0) {
-      result = "Save";
-    } else if (status == 1) {
-      result = "Delete";
-    } else {
-      result = "Unknown";
-    }
-    return result;
-  };
-
   return (
     <div>
       <Card className={clsx(classes.root, className)} {...rest}>
@@ -90,6 +66,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
               <TableHead>
                 <TableRow>
                   <TableCell
+                  align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -103,6 +80,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                     </TableSortLabel>
                   </TableCell>
                   <TableCell
+                  align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -113,6 +91,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                     Customer
                   </TableCell>
                   <TableCell
+                  align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -125,6 +104,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                     </TableSortLabel>
                   </TableCell>
                   <TableCell
+                  align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -136,12 +116,12 @@ const Results = ({ className, ramanReader, ...rest }) => {
                       Location
                   </TableCell>
                   <TableCell
+                  align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
                       width: "15%",
                       color: "#112855",
-                      paddingLeft:"10px"
                     }}
                   >
                     Actions
@@ -175,6 +155,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                         </Box>
                       </TableCell>
                       <TableCell
+                      align="center"
                         style={{
                           whiteSpace: "normal",
                           wordWrap: "break-word",
@@ -184,6 +165,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                         {ramanReader.customer}
                       </TableCell>
                       <TableCell
+                      align="center"
                         style={{
                           whiteSpace: "normal",
                           wordWrap: "break-word",
@@ -203,6 +185,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                         </Typography>
                       </TableCell>
                       <TableCell
+                      align="center"
                         style={{
                           whiteSpace: "normal",
                           wordWrap: "break-word",
@@ -213,38 +196,14 @@ const Results = ({ className, ramanReader, ...rest }) => {
                       </TableCell>
                       <TableCell align="center">
                         {ramanReader.status == 0 ? (
-                          <div style={{display: "flex"}}>
+                          <div style={{align:"center"}}>
                             <IconButton style={{color: "#cc0000"}} component="span"  onClick={handleDeleteRamanreaderView.bind(null, ramanReader)}>
                               <Icon>delete</Icon>
                             </IconButton>
                             <IconButton color="primary" aria-label="upload picture" component="span">
                               <Icon>download</Icon>
                             </IconButton>
-                          {/* <Button 
-                            size="small"
-                            startIcon={<Icon>delete</Icon>}
-                            style={{
-                              color: "white",
-                              backgroundColor: "#cc0000",
-                            }}
-                            variant="contained"
-                            onClick={handleDeleteRamanreaderView.bind(null, ramanReader)}
-                          >
-                          
-                          </Button> &nbsp;
-                          <Button
-                          size="small"
-                          startIcon={<Icon>download</Icon>}
-                          style={{
-                            color: "white",
-                            backgroundColor: ""
-                          }}
-                          variant="contained"
-                          onClick={handleDeleteRamanreaderView.bind(null, ramanReader)}
-                        >
-                       
-                        </Button> */}
-                        </div>
+                          </div>
                         ) : null}
 
                       </TableCell>
@@ -283,7 +242,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
       >
         <p>Are you sure you want to delete this file?</p>
         <br />
-        <h4>{ramanreader && ramanreader.code}</h4>
+        <h4>{ramanreader && ramanreader.filename}</h4>
         <div style={{ textAlign: "center", marginTop: "20px" }}>
           <Button style={{ backgroundColor: "#112855", color: "#ffff" }} variant="contained" onClick={handleReportsClose} className="mt-20 ml-20">
             <Icon>close</Icon>

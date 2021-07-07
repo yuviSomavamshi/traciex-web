@@ -17,9 +17,12 @@ import {
   TablePagination,
   TableRow,
   Typography,
-  makeStyles
+  makeStyles,
+  IconButton
 } from "@material-ui/core";
 import { Modal } from "antd";
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -92,7 +95,9 @@ const Results = ({ className, barCode, ...rest }) => {
             <Table id="printTable">
               <TableHead>
                 <TableRow>
+                  
                   <TableCell
+                   align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -101,55 +106,13 @@ const Results = ({ className, barCode, ...rest }) => {
                       color: "#112855"
                     }}
                   >
-                    <TableSortLabel active={sortBy === "code"} direction={order} onClick={createSortHandler("code")}>
-                      Barcode
-                    </TableSortLabel>
-                  </TableCell>
-                  {/* <TableCell
-                    style={{
-                      whiteSpace: "normal",
-                      wordWrap: "break-word",
-                      paddingLeft: "20px",
-                      width: "15%",
-                      color: "#112855"
-                    }}
-                  >
-                    <TableSortLabel active={sortBy === "batchId"} direction={order} onClick={createSortHandler("batchId")}>
+                    <TableSortLabel active={sortBy === "filename"} direction={order} onClick={createSortHandler("filename")}>
                       Filename
                     </TableSortLabel>
                   </TableCell> 
-                  <TableCell
-                    style={{
-                      whiteSpace: "normal",
-                      wordWrap: "break-word",
-                      width: "15%",
-                      color: "#112855"
-                    }}
-                  >
-                    Valid
-                  </TableCell> 
-                  <TableCell
-                    style={{
-                      whiteSpace: "normal",
-                      wordWrap: "break-word",
-                      width: "15%",
-                      color: "#112855"
-                    }}
-                  >
-                    Invalid
-                  </TableCell> 
-                  <TableCell
-                    style={{
-                      whiteSpace: "normal",
-                      wordWrap: "break-word",
-                      width: "15%",
-                      color: "#112855"
-                    }}
-                  >
-                    Duplicates
-                  </TableCell> */}
                   
                   <TableCell
+                   align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -161,33 +124,24 @@ const Results = ({ className, barCode, ...rest }) => {
                       Created Time
                     </TableSortLabel>
                   </TableCell>
+
                   <TableCell
+                  align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
-                      width: "15%",
+                      width: "35%",
                       color: "#112855"
                     }}
                   >
-                    Assigned/Scrapped Time
-                  </TableCell>
+                    Summary
+                  </TableCell> 
                   <TableCell
+                   align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
-                      width: "15%",
-                      color: "#112855"
-                    }}
-                  >
-                    <TableSortLabel active={sortBy === "status"} direction={order} onClick={createSortHandler("status")}>
-                      Status
-                    </TableSortLabel>
-                  </TableCell>
-                  <TableCell
-                    style={{
-                      whiteSpace: "normal",
-                      wordWrap: "break-word",
-                      width: "15%",
+                      width: "12%",
                       color: "#112855"
                     }}
                   >
@@ -200,27 +154,28 @@ const Results = ({ className, barCode, ...rest }) => {
                   return (
                     <TableRow hover key={barCode.code}>
                       <TableCell
+                       align="center"
                         style={{
                           whiteSpace: "normal",
-                          paddingLeft: "20px",
+                    
                           wordWrap: "break-word",
                           width: "15%"
                         }}
                       >
-                        <Box alignItems="center" display="flex">
-                          <Typography
-                            color="textPrimary"
-                            variant="body1"
-                            style={{
-                              paddingTop: "10px",
-                              paddingBottom: "10px"
-                            }}
-                          >
-                            {barCode.code}
-                          </Typography>
-                        </Box>
+                        <Typography
+                          align="center"
+                          color="textPrimary"
+                          variant="body1"
+                          style={{
+                            paddingTop: "10px",
+                            paddingBottom: "10px"
+                          }}
+                        >
+                          {barCode.code}
+                        </Typography>  
                       </TableCell>
                       <TableCell
+                       align="center"
                         style={{
                           whiteSpace: "normal",
                           wordWrap: "break-word",
@@ -229,39 +184,48 @@ const Results = ({ className, barCode, ...rest }) => {
                       >
                         {moment(barCode.createdAt).format("DD-MMM-YYYY HH:mm:ss")}
                       </TableCell>
-                      <TableCell>
-                        <Typography color="textPrimary" variant="body1">
-                          {barCode.status != 0 && moment(barCode.updatedAt).format("DD-MMM-YYYY HH:mm:ss")}
-                        </Typography>
-                      </TableCell>
                       <TableCell
+                      align="center"
                         style={{
                           whiteSpace: "normal",
                           wordWrap: "break-word",
-                          width: "15%"
+                          width: "35%"
                         }}
                       >
-                        <Chip
-                          key={barCode.code}
-                          color="primary"
-                          style={{ backgroundColor: getStatusColor(barCode.status) }}
-                          label={getStatus(barCode.status)}
-                        />
+                      <div  className={classes.root}>
+                        <Grid container spacing={2}>
+                          <Grid item xs={3}>
+                            <div className="barcodecard1">
+                              Total<br/>
+                              {barCode.total}
+                            </div>
+                          </Grid>
+                          <Grid item xs={3}>
+                            <div className="barcodecard4">
+                              Valid<br/>
+                              {barCode.valid}
+                            </div>
+                          </Grid>
+                          <Grid item xs={3}>
+                            <div className="barcodecardinvalid">
+                              Invalid<br/>
+                              {barCode.invalid}
+                            </div>
+                          </Grid>
+                          <Grid item xs={3}>
+                            <div className="barcodecardpending">
+                              Duplicates<br/>
+                              {barCode.duplicates}
+                            </div>
+                          </Grid>
+                        </Grid>
+                      </div>
                       </TableCell>
-                      <TableCell>
-                        {barCode.status == 0 ? (
-                          <Button
-                            style={{
-                              color: "white",
-                              backgroundColor: "#cc0000"
-                            }}
-                            variant="contained"
-                            onClick={handleDeleteBarcodeView.bind(null, barCode)}
-                          >
-                            <Icon>delete</Icon>
-                            <span className="pl-8 capitalize">Delete</span>
-                          </Button>
-                        ) : null}
+                     
+                      <TableCell  align="center">
+                        <IconButton style={{color: "#cc0000"}} component="span" onClick={handleDeleteBarcodeView.bind(null, barCode)}>
+                          <Icon>delete</Icon>
+                        </IconButton>
                       </TableCell>
                     </TableRow>
                   );

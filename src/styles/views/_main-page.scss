@@ -157,6 +157,7 @@
 	// border-radius: 5px;
 	// font-size: 12px;
 }
+
 .card2 {
 	background: #d2f9ee;
 	color: #38e1b0;
@@ -189,7 +190,38 @@
 	border-radius: 5px;
 	font-size: 8px;
 }
-
+.barcodecard1{
+	background: #d1ecf1;
+	color: #35a4ba;
+	text-align: center;
+	padding: 2px;
+	border-radius: 5px;
+	font-size: 12px;
+}
+.barcodecard4 {
+	background: #d2f9ee;
+	color: #38e1b0;
+	text-align: center;
+	padding: 2px;
+	border-radius: 5px;
+	font-size: 12px;
+}
+.barcodecardinvalid {
+	background: #fddcdf;
+	color: #f65a6f;
+	text-align: center;
+	padding: 2px;
+	border-radius: 5px;
+	font-size: 12px;
+}
+.barcodecardpending{
+	background: rgb(247, 228, 173);
+	color: #FF8C00;
+	text-align: center;
+	padding: 2px;
+	border-radius: 5px;
+	font-size: 12px;
+}
 .text-title {
 	color: #2e4a66;
 }
