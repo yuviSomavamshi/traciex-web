@@ -106,7 +106,7 @@ const Results = ({ className, barCode, ...rest }) => {
                       color: "#112855"
                     }}
                   >
-                    <TableSortLabel active={sortBy === "filename"} direction={order} onClick={createSortHandler("filename")}>
+                    <TableSortLabel active={sortBy === "originalFileName"} direction={order} onClick={createSortHandler("originalFileName")}>
                       Filename
                     </TableSortLabel>
                   </TableCell> 
@@ -152,7 +152,7 @@ const Results = ({ className, barCode, ...rest }) => {
               <TableBody>
                 {barCode.barCodeList.slice(0, rest.limit).map((barCode, index) => {
                   return (
-                    <TableRow hover key={barCode.code}>
+                    <TableRow hover key={barCode.originalFileName}>
                       <TableCell
                        align="center"
                         style={{
@@ -171,7 +171,7 @@ const Results = ({ className, barCode, ...rest }) => {
                             paddingBottom: "10px"
                           }}
                         >
-                          {barCode.code}
+                          {barCode.originalFileName}
                         </Typography>  
                       </TableCell>
                       <TableCell
@@ -197,25 +197,25 @@ const Results = ({ className, barCode, ...rest }) => {
                           <Grid item xs={3}>
                             <div className="barcodecard1">
                               Total<br/>
-                              {barCode.total}
+                              {barCode.totalUploaded}
                             </div>
                           </Grid>
                           <Grid item xs={3}>
                             <div className="barcodecard4">
                               Valid<br/>
-                              {barCode.valid}
+                              {barCode.totalValid}
                             </div>
                           </Grid>
                           <Grid item xs={3}>
                             <div className="barcodecardinvalid">
                               Invalid<br/>
-                              {barCode.invalid}
+                              {barCode.totalInvalid}
                             </div>
                           </Grid>
                           <Grid item xs={3}>
                             <div className="barcodecardpending">
                               Duplicates<br/>
-                              {barCode.duplicates}
+                              {barCode.totalDuplicates}
                             </div>
                           </Grid>
                         </Grid>
@@ -262,7 +262,7 @@ const Results = ({ className, barCode, ...rest }) => {
       >
         <p>Are you sure you want to delete this barcode?</p>
         <br />
-        <h4>{barcode && barcode.code}</h4>
+        <h4>{barcode && barcode.originalFileName}</h4>
         <div style={{ textAlign: "center", marginTop: "20px" }}>
           <Button style={{ backgroundColor: "#112855", color: "#ffff" }} variant="contained" onClick={handleReportsClose} className="mt-20 ml-20">
             <Icon>close</Icon>
