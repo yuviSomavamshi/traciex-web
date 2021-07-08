@@ -21,8 +21,8 @@ import {
   IconButton
 } from "@material-ui/core";
 import { Modal } from "antd";
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -95,9 +95,8 @@ const Results = ({ className, barCode, ...rest }) => {
             <Table id="printTable">
               <TableHead>
                 <TableRow>
-                  
                   <TableCell
-                   align="center"
+                    align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -109,10 +108,10 @@ const Results = ({ className, barCode, ...rest }) => {
                     <TableSortLabel active={sortBy === "originalFileName"} direction={order} onClick={createSortHandler("originalFileName")}>
                       Filename
                     </TableSortLabel>
-                  </TableCell> 
-                  
+                  </TableCell>
+
                   <TableCell
-                   align="center"
+                    align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -126,7 +125,7 @@ const Results = ({ className, barCode, ...rest }) => {
                   </TableCell>
 
                   <TableCell
-                  align="center"
+                    align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -135,9 +134,9 @@ const Results = ({ className, barCode, ...rest }) => {
                     }}
                   >
                     Summary
-                  </TableCell> 
+                  </TableCell>
                   <TableCell
-                   align="center"
+                    align="center"
                     style={{
                       whiteSpace: "normal",
                       wordWrap: "break-word",
@@ -154,10 +153,10 @@ const Results = ({ className, barCode, ...rest }) => {
                   return (
                     <TableRow hover key={barCode.originalFileName}>
                       <TableCell
-                       align="center"
+                        align="center"
                         style={{
                           whiteSpace: "normal",
-                    
+
                           wordWrap: "break-word",
                           width: "15%"
                         }}
@@ -172,10 +171,11 @@ const Results = ({ className, barCode, ...rest }) => {
                           }}
                         >
                           {barCode.originalFileName}
-                        </Typography>  
+                        </Typography>
+
                       </TableCell>
                       <TableCell
-                       align="center"
+                        align="center"
                         style={{
                           whiteSpace: "normal",
                           wordWrap: "break-word",
@@ -185,45 +185,49 @@ const Results = ({ className, barCode, ...rest }) => {
                         {moment(barCode.createdAt).format("DD-MMM-YYYY HH:mm:ss")}
                       </TableCell>
                       <TableCell
-                      align="center"
+                        align="center"
                         style={{
                           whiteSpace: "normal",
                           wordWrap: "break-word",
                           width: "35%"
                         }}
                       >
-                      <div  className={classes.root}>
-                        <Grid container spacing={2}>
-                          <Grid item xs={3}>
-                            <div className="barcodecard1">
-                              Total<br/>
-                              {barCode.totalUploaded}
-                            </div>
+                        <div className={classes.root}>
+                          <Grid container spacing={2}>
+                            <Grid item xs={3}>
+                              <div className="barcodecard1">
+                                Total
+                                <br />
+                                {barCode.totalUploaded}
+                              </div>
+                            </Grid>
+                            <Grid item xs={3}>
+                              <div className="barcodecard4">
+                                Valid
+                                <br />
+                                {barCode.totalValid}
+                              </div>
+                            </Grid>
+                            <Grid item xs={3}>
+                              <div className="barcodecardinvalid">
+                                Invalid
+                                <br />
+                                {barCode.totalInvalid}
+                              </div>
+                            </Grid>
+                            <Grid item xs={3}>
+                              <div className="barcodecardpending">
+                                Duplicates
+                                <br />
+                                {barCode.totalDuplicates}
+                              </div>
+                            </Grid>
                           </Grid>
-                          <Grid item xs={3}>
-                            <div className="barcodecard4">
-                              Valid<br/>
-                              {barCode.totalValid}
-                            </div>
-                          </Grid>
-                          <Grid item xs={3}>
-                            <div className="barcodecardinvalid">
-                              Invalid<br/>
-                              {barCode.totalInvalid}
-                            </div>
-                          </Grid>
-                          <Grid item xs={3}>
-                            <div className="barcodecardpending">
-                              Duplicates<br/>
-                              {barCode.totalDuplicates}
-                            </div>
-                          </Grid>
-                        </Grid>
-                      </div>
+                        </div>
                       </TableCell>
-                     
-                      <TableCell  align="center">
-                        <IconButton style={{color: "#cc0000"}} component="span" onClick={handleDeleteBarcodeView.bind(null, barCode)}>
+
+                      <TableCell align="center">
+                        <IconButton style={{ color: "#cc0000" }} component="span" onClick={handleDeleteBarcodeView.bind(null, barCode)}>
                           <Icon>delete</Icon>
                         </IconButton>
                       </TableCell>
