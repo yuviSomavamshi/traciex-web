@@ -3,12 +3,13 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import moment from "moment";
 import PerfectScrollbar from "react-perfect-scrollbar";
+import axios from "axios";
+import { url } from "../../Constants";
 import {
   Icon,
   Box,
   Button,
   Card,
-  Chip,
   Table,
   TableBody,
   TableCell,
@@ -51,6 +52,28 @@ const Results = ({ className, ramanReader, ...rest }) => {
     setRamanreader(data);
     setOpenReports(!openReports);
   };
+
+  const handleDownload = (data) => {
+
+    axios
+      .post(url + "/raman/download", { "filename": data.filename }, {
+        responseType: "blob",
+        headers: {
+          "x-api-key": "23423432423"
+        }
+      })
+      .then((response) => {
+        const type = response.headers["content-type"];
+        const blob = new Blob([response.data], { type: type, encoding: "UTF-8" });
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = "download.csv";
+        link.click();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   const handleDeleteRamanreader = (data) => {
     rest.handleDeleteRamanreader(data);
@@ -200,7 +223,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                             <IconButton style={{ color: "#cc0000" }} component="span" onClick={handleDeleteRamanreaderView.bind(null, ramanReader)}>
                               <Icon>delete</Icon>
                             </IconButton>
-                            <IconButton color="primary" aria-label="upload picture" component="span">
+                            <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleDownload.bind(null, ramanReader)}>
                               <Icon>download</Icon>
                             </IconButton>
                           </div>
