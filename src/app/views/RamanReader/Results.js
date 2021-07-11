@@ -131,7 +131,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
               <TableBody>
                 {ramanReader.ramanreaderCodeList.slice(0, rest.limit).map((ramanReader, index) => {
                   return (
-                    <TableRow hover key={ramanReader.code}>
+                    <TableRow hover key={ramanReader.filename}>
                       <TableCell
                         style={{
                           whiteSpace: "normal",
@@ -162,7 +162,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
                           width: "15%"
                         }}
                       >
-                        {ramanReader.customer}
+                        {ramanReader.account.name}
                       </TableCell>
                       <TableCell
                         align="center"
