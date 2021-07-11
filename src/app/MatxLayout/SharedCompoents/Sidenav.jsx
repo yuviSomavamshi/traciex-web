@@ -94,13 +94,13 @@ class Sidenav extends Component {
   render() {
     let mainNav = [];
     let role = localStorage.getItem("loginRole");
-    switch(role){
+    switch (role) {
       case "Admin":
         mainNav = navigations;
-      break;
+        break;
       case "SubAdmin":
         mainNav = silverFactoryNavigations;
-      break;
+        break;
       default:
         window.location.href = "/login";
         return;

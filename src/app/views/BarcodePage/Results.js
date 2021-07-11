@@ -172,7 +172,6 @@ const Results = ({ className, barCode, ...rest }) => {
                         >
                           {barCode.originalFileName}
                         </Typography>
-
                       </TableCell>
                       <TableCell
                         align="center"
