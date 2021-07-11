@@ -93,14 +93,17 @@ class Sidenav extends Component {
   renderOverlay = () => <div onClick={() => this.updateSidebarMode({ mode: "close" })} className="sidenav__overlay" />;
   render() {
     let mainNav = [];
-    if (localStorage.getItem("loginRole") == null) {
-      window.location.href = "/login";
-    } else {
-      if (localStorage.getItem("loginRole") == "SubAdmin") {
-        mainNav = silverFactoryNavigations;
-      } else {
+    let role = localStorage.getItem("loginRole");
+    switch(role){
+      case "Admin":
         mainNav = navigations;
-      }
+      break;
+      case "SubAdmin":
+        mainNav = silverFactoryNavigations;
+      break;
+      default:
+        window.location.href = "/login";
+        return;
     }
     return (
       <Fragment>

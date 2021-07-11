@@ -28,7 +28,7 @@ export function loginWithEmailAndPassword({ email, password }) {
       .then((user) => {
         dispatch(setUserData(user));
 
-        if (["Admin", "SubAdmin", "Customer"].includes(user.role)) {
+        if (["Admin", "SubAdmin"].includes(user.role)) {
           history.push({
             pathname: "/"
           });
