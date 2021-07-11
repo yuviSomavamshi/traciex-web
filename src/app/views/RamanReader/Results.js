@@ -218,7 +218,6 @@ const Results = ({ className, ramanReader, ...rest }) => {
                         {ramanReader.location}
                       </TableCell>
                       <TableCell align="center">
-                        {ramanReader.status == 0 ? (
                           <div style={{ align: "center" }}>
                             <IconButton style={{ color: "#cc0000" }} component="span" onClick={handleDeleteRamanreaderView.bind(null, ramanReader)}>
                               <Icon>delete</Icon>
@@ -227,7 +226,6 @@ const Results = ({ className, ramanReader, ...rest }) => {
                               <Icon>download</Icon>
                             </IconButton>
                           </div>
-                        ) : null}
                       </TableCell>
                     </TableRow>
                   );
