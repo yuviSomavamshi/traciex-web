@@ -54,14 +54,17 @@ const Results = ({ className, ramanReader, ...rest }) => {
   };
 
   const handleDownload = (data) => {
-
     axios
-      .post(url + "/raman/download", { "filename": data.filename }, {
-        responseType: "blob",
-        headers: {
-          "x-api-key": "23423432423"
+      .post(
+        url + "/raman/download",
+        { filename: data.filename },
+        {
+          responseType: "blob",
+          headers: {
+            "x-api-key": "23423432423"
+          }
         }
-      })
+      )
       .then((response) => {
         const type = response.headers["content-type"];
         const blob = new Blob([response.data], { type: type, encoding: "UTF-8" });
@@ -73,7 +76,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
       .catch((error) => {
         console.error(error);
       });
-  }
+  };
 
   const handleDeleteRamanreader = (data) => {
     rest.handleDeleteRamanreader(data);
@@ -218,14 +221,14 @@ const Results = ({ className, ramanReader, ...rest }) => {
                         {ramanReader.location}
                       </TableCell>
                       <TableCell align="center">
-                          <div style={{ align: "center" }}>
-                            <IconButton style={{ color: "#cc0000" }} component="span" onClick={handleDeleteRamanreaderView.bind(null, ramanReader)}>
-                              <Icon>delete</Icon>
-                            </IconButton>
-                            <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleDownload.bind(null, ramanReader)}>
-                              <Icon>download</Icon>
-                            </IconButton>
-                          </div>
+                        <div style={{ align: "center" }}>
+                          <IconButton style={{ color: "#cc0000" }} component="span" onClick={handleDeleteRamanreaderView.bind(null, ramanReader)}>
+                            <Icon>delete</Icon>
+                          </IconButton>
+                          <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleDownload.bind(null, ramanReader)}>
+                            <Icon>download</Icon>
+                          </IconButton>
+                        </div>
                       </TableCell>
                     </TableRow>
                   );
