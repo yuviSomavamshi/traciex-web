@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>User Registration</title>
+  <meta name="description" content="QR Code Genereator">
+
+  <meta name="application-name" content="Materialize Stepper" />
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+
+  <meta name="theme-color" content="#8E8E93">
+
+  <!--Import Google Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Roboto:300,400,500" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/prism.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/mstepper.min.css" media="screen,projection" />
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
+<body>
+  <main>
+    <div class="container grey-text text-darken-2">
+      <div class="introduction">
+        <img src="/assets/images/certis-logo.png" alt="" style="max-width: 200px;vertical-align: left;">
+        <img src="/assets/images/logo.png" alt="" style="max-width: 200px;vertical-align: left;">
+        <img src="/assets/images/silverfactory.jpeg" alt="" style="max-width: 200px;vertical-align: left;">
+        <h4 class="light">User Registration</h4>
+      </div>
+      <div class="row main">
+        <div class="col s12">
+          <div class="card">
+            <div class="card-content">
+              <div class="main-content">
+                <form id="form">
+                  <div id="patient" class="row input-row">
+                    <div class="input-field col s12">
+                      <input id="passport" name="passport" type="text" class="validate" required>
+                      <label for="passport">IC/Passport</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input id="name" name="name" type="text" class="validate" required>
+                      <label for="name">Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input id="dob" name="dob" type="text" class="datepicker" required>
+                      <label for="dob">Date of Birth</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input type="text" id="nationality" value="Singapore" class="autocomplete validate" required>
+                      <label for="nationality">Nationality</label>
+                    </div>
+                  </div>
+
+                  <div class="row  output-row hide">
+                    <div class="uuid-view s12">
+                      <div id="uuidMessage" class="col s12"></div>
+                      <div id="uuid" class="col s6"></div>
+                      <div id="uuidCopy" class="col s6"></div>
+                    </div>
+                  </div>
+
+                  <div id="actions" class="step-actions">
+                    <label>
+                      <input id="consent" type="checkbox" onclick="onClickHandler()" />
+                      <span>
+                        <p>I voluntarily consent to take part in this research study. I have fully discussed and understood the purpose and procedures of this study. This study has been explained to me in a language that I understand. I have been given enough time to ask any questions that I have about the study, and all my questions have been answered to my satisfaction. I have also been informed and understood the procedures available and their possible benefits and risks.</p>
+                        <br />
+                        <p>By agreeing to participate in this study, I agree to provide breath samples and access to my test results and other respiratory diseases as long as the results are used only in this study.</p>
+                      </span>
+                    </label>
+                    <button class="waves-effect waves-dark btn grey darken-3 validate" type="button" id="submit"
+                      disabled="disabled" style="margin-top: 25px">Register</button>
+                  </div>
+                  <div class="row output-row">
+                    <div class="qr-view col s12">
+                      <div id="message" style="margin-top: 16px"></div>
+                      <div id="canvas" style="display: flex;flex-direction: column;flex-wrap: wrap;text-align: center;">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.14.0/dist/jquery.validate.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.14.0/dist/additional-methods.min.js
+  "></script>
+  <script src="https://unpkg.com/qr-code-styling/lib/qr-code-styling.js"></script>
+  <script src="js/qr.js"></script>
+  <script src="js/mstepper.js"></script>
+  <script src="js/prism.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.datepicker');
+      var instances = M.Datepicker.init(elems, {
+        format: 'dd-mm-yyyy',
+        defaultDate: new Date(),
+        yearRange: 100,
+        maxDate: new Date()
+      });
+    });
+
+    function onClickHandler() {
+      var chk = document.getElementById("consent").checked;
+      let button = document.querySelector('#submit');
+      button.disabled = !chk;
+    }
+    //Autocomplete
+    $(function () {
+      $.ajax({
+        type: "GET",
+        url: "https://restcountries.eu/rest/v2/all?fields=name",
+        success: function (response) {
+          var countryArray = response;
+          var dataCountry = {};
+          for (var i = 0; i < countryArray.length; i++) {
+            dataCountry[countryArray[i].name] = countryArray[i].flag; //countryArray[i].flag or null
+          }
+          var elems = document.querySelectorAll('.autocomplete');
+          var instances = M.Autocomplete.init(elems, {
+            data: dataCountry,
+            minLength: 0,
+            limit: 5, // The max amount of results that can be shown at once. Default: Infinity.
+          });
+          $('#nationality').on('keyup', function () {
+            if (instances[0].count === 0) {
+              console.log('no matches');
+            }
+          })
+        },
+      });
+    });
+
+    /**
+     * @see http://stackoverflow.com/q/7616461/940217
+     * @return {number}
+     */
+    String.prototype.hashCode = function () {
+      if (Array.prototype.reduce) {
+        return this.split("").reduce(function (a, b) {
+          a = ((a << 5) - a) + b.charCodeAt(0);
+          return a & a
+        }, 0);
+      }
+      var hash = 0;
+      if (this.length === 0) return hash;
+      for (var i = 0; i < this.length; i++) {
+        var character = this.charCodeAt(i);
+        hash = ((hash << 5) - hash) + character;
+        hash = hash & hash; // Convert to 32bit integer
+      }
+      return hash;
+    }
+
+    String.prototype.hashcode = function () {
+      return (this.hashCode() + 2147483647) + 1;
+    };
+
+    function generateUUID() {
+      var d = new Date().getTime();
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+      return uuid;
+    };
+
+    function copyUUID() {
+      /* Get the text field */
+      var copyText = document.getElementById("generatedUUID");
+
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      document.execCommand("copy");
+
+      /* Alert the copied text */
+      alert("Copied the text: " + copyText.value);
+    }
+
+    $("#submit").click(function () {
+
+      $("#message").val("Registering");
+      var passport = $("#passport").val();
+      if (passport == null || passport.trim().length == 0) {
+        $("#message").val("Passport field is required");
+        return;
+      }
+      var name = $("#name").val();
+      if (name == null || name.trim().length == 0) {
+        $("#message").val("Name field is required");
+        return;
+      }
+      var dob = $("#dob").val();
+      if (dob == null || dob.trim().length == 0) {
+        $("#message").val("Please select date of birth");
+        return;
+      }
+      var nationality = $("#nationality").val();
+      if (nationality == null || nationality.trim().length == 0) {
+        $("#message").val("Please select Nationality");
+        return;
+      }
+      var uuid = generateUUID();
+      var patientId = new String(passport).toUpperCase();
+
+      
+      var url = decodeURI(window.location.href)
+
+      var params = {}
+      function getParams(paramString) {
+        var q = paramString && paramString.split('&')
+        q && q.forEach(f => {
+          params[f.split("=")[0]] = f.split("=")[1]
+        });
+      }
+      getParams(url.split('?')[1])
+      var userData = {
+        "id": patientId.toString(),
+        "passport": passport,
+        "name": name,
+        "dob": dob,
+        "nationality": countryCodeByName[nationality] || nationality,
+        "timestamp": Date.now().toString(),
+        ...params
+      }
+
+      createNewQRcode(userData);
+      document.getElementById("name").value = ""
+      document.getElementById("dob").value = ""
+      document.getElementById("nationality").value = ""
+      document.getElementById("passport").value = ""
+    })
+
+    $.validator.setDefaults({
+      errorClass: 'invalid',
+      validClass: "valid",
+      errorPlacement: function (error, element) {
+        $(element)
+          .closest("form")
+          .find("label[for='" + element.attr("id") + "']")
+          .attr('data-error', error.text());
+      },
+
+    });
+
+    jQuery.validator.addMethod("exactlength", function (value, element, param) {
+      return this.optional(element) || value.length == param;
+    }, $.validator.format("Please enter exactly {0} characters."));
+
+    jQuery.validator.addMethod("fullname", function (value, element) {
+      if (/^([a-zA-Z]{2,}\s[a-zA-z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/.test(value)) {
+        return true;
+      } else {
+        return false;
+      };
+    }, 'Please enter your full name.');
+
+    jQuery.validator.addMethod("lettersonly", function (value, element) {
+      return this.optional(element) || /^[a-z ]+$/i.test(value);
+    }, "Letters only please");
+
+    $("#form").validate({
+      onkeyup: function (el, e) {
+        $(el).valid();
+      },
+      rules: {
+        passport: {
+          required: true,
+        },
+        name: {
+          required: true,
+          lettersonly: true
+        },
+        dob: {
+          required: true,
+          date: true
+        },
+        nationality: {
+          required: true,
+          date: true
+        }
+      },
+      messages: {
+        name: {
+          fullname: "Please enter your full name.",
+          required: "Enter your full name, please.",
+        }
+      }
+    });
+  </script>
+
+
+</body>
+
+</html>

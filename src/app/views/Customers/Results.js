@@ -82,7 +82,7 @@ const Results = ({ className, customers, ...rest }) => {
     setOpen(!open);
     setOpenLocView(!openView);
     if (customerId != null && location != null) {
-      setQRString(`/patient-registration.html?staffId=${customerId}&location=${location}`);
+      setQRString(`/user-registration.html?staffId=${customerId}&location=${location}`);
     }
   };
 
