@@ -1,6 +1,6 @@
 start=`date +%s`
-npm i --development
-npm i --production
+#npm i --development
+#npm i --production
 npm run prettify
 
 npm run build;
