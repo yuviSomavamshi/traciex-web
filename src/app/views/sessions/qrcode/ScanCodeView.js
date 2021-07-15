@@ -44,9 +44,10 @@ const ScanCodeView = ({ params }) => {
       handleStart();
     });
 
-    socket.on(webConstants.PAUSE_WEB_TIMER, (msg) => {
+    socket.on(webConstants.STOP_WEB_TIMER, (msg) => {
       handleReset();
     });
+
 
     let interval = null;
 
