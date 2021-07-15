@@ -9,7 +9,7 @@ import { storeLocalData, getLocalData, getSocket } from "./webHelperFunctions";
 import "./StopWatch.css";
 import { APPNAME } from "../../../Constants";
 
-const socket = getSocket();
+var socket = getSocket();
 
 var username = getLocalData(webConstants.WEB_TIMER_UUID);
 if (username == null) {
@@ -48,6 +48,12 @@ const ScanCodeView = ({ params }) => {
       handleReset();
     });
 
+    socket.on(webConstants.DISCONNECT_TIMER, (msg) => {
+      username = "WEB-" + uuid();
+      storeLocalData(webConstants.WEB_TIMER_UUID, username);
+      socket.emit(webConstants.REGISTER_TIMER, { username });
+      setIsPaired(false);
+    });
 
     let interval = null;
 
