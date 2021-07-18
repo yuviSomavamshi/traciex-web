@@ -12,7 +12,7 @@ import { APPNAME } from "../../../Constants";
 var socket = getSocket();
 
 var username = getLocalData(webConstants.WEB_TIMER_UUID);
-if (username == null) {
+if (username === null) {
   username = "WEB-" + uuid();
   storeLocalData(webConstants.WEB_TIMER_UUID, username);
 }
@@ -61,7 +61,7 @@ const ScanCodeView = ({ params }) => {
       interval = setInterval(() => {
         setTime((time) => time + 10);
       }, 10);
-    } else if (interval != null) {
+    } else if (interval !== null) {
       clearInterval(interval);
     }
 

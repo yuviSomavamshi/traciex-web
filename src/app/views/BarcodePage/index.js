@@ -36,14 +36,14 @@ class BarcodePage extends Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.barCode.message != this.props.barCode.message) {
+    if (nextProps.barCode.message !== this.props.barCode.message) {
       this.setState({
         ...this.state,
         openSnackBar: true,
         message: nextProps.barCode.message,
         severity: nextProps.barCode.severity
       });
-      if (nextProps.barCode.severity == "success") {
+      if (nextProps.barCode.severity === "success") {
         setTimeout(() => {
           this.props.getBarCodesList("", 0, this.state.limit, this.state.order, this.state.sortBy);
         }, 3000);

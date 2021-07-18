@@ -106,8 +106,8 @@ class Changepasswordpage extends Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProp) {
-    if (nextProp.login.changepwdSuccess != null) {
-      if (nextProp.login.changepwdSuccess == true && this.state.password == this.state.confirmPassword) {
+    if (nextProp.login.changepwdSuccess !== null) {
+      if (nextProp.login.changepwdSuccess === true && this.state.password === this.state.confirmPassword) {
         setTimeout(() => {
           this.props.handleClose();
           history.push("/login");

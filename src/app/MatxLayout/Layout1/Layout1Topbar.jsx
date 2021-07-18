@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { Icon, IconButton, MuiThemeProvider, Grid, MenuItem, Button, Link, Dialog, DialogTitle, TextField } from "@material-ui/core";
+import { Icon, Grid, MenuItem, Dialog } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
 import { setLayoutSettings } from "app/redux/actions/LayoutActions";
@@ -9,9 +9,6 @@ import { PropTypes } from "prop-types";
 import { isMdScreen } from "utils";
 import { MatxMenu } from "matx";
 import { APPNAME_PREFIX } from "../../Constants";
-import NotificationBar from "../SharedCompoents/NotificationBar";
-import Layout1 from "./Layout1";
-import { useState } from "react";
 import Changepasswordpage from "./Changepasswordpage";
 
 const styles = (theme) => ({
@@ -107,7 +104,7 @@ class Layout1Topbar extends Component {
                       <img alt="Logo" src="/assets/images/HealthXLogo1x.png" height="35" />
                     </Grid>
                     <Grid key="silverfactory" item>
-                      {APPNAME_PREFIX == "Tracie" && <img alt="Logo" src="/assets/images/silverfactory.jpeg" height="35" />}
+                      {APPNAME_PREFIX === "Tracie" && <img alt="Logo" src="/assets/images/silverfactory.jpeg" height="35" />}
                     </Grid>
 
                     <Grid key="menu" item>

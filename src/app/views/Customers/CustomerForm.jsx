@@ -32,7 +32,7 @@ class CustomerForm extends Component {
   };
 
   componentDidMount() {
-    if (this.state.password == null) {
+    if (this.state.password === null) {
       this.setState({
         password: this.generatePassword()
       });
@@ -40,14 +40,14 @@ class CustomerForm extends Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.customers.message != null && nextProps.customers.severity != null) {
+    if (nextProps.customers.message !== null && nextProps.customers.severity !== null) {
       this.setState({
         ...this.state,
         openSnackBar: true,
         message: nextProps.customers.message,
         severity: nextProps.customers.severity
       });
-      if (nextProps.customers.severity == "success") {
+      if (nextProps.customers.severity === "success") {
         setTimeout(() => {
           this.props.handleClose();
           this.props.handleCustomerSubmit();
@@ -93,7 +93,7 @@ class CustomerForm extends Component {
       let entity2 = Math.ceil(numeric.length * Math.random() * Math.random());
       let entity3 = Math.ceil(punctuation.length * Math.random() * Math.random());
       let hold = string.charAt(entity1);
-      hold = password.length % 2 == 0 ? hold.toUpperCase() : hold;
+      hold = password.length % 2 === 0 ? hold.toUpperCase() : hold;
       character += hold;
       character += numeric.charAt(entity2);
       character += punctuation.charAt(entity3);

@@ -43,7 +43,7 @@ class Layout1 extends Component {
   };
 
   render() {
-    let { settings, classes, theme, loginRole } = this.props;
+    let { settings, classes, theme } = this.props;
 
     let { layout1Settings } = settings;
     let layoutClasses = {

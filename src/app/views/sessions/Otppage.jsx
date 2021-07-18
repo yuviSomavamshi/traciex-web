@@ -72,8 +72,8 @@ class Otppage extends Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProp) {
-    if (nextProp.login.otpSuccess != null) {
-      if (nextProp.login.otpSuccess == true) {
+    if (nextProp.login.otpSuccess !== null) {
+      if (nextProp.login.otpSuccess === true) {
         localStorage.setItem("reset-password-token", this.state.token);
         history.push({
           pathname: "/reset-password"
@@ -209,7 +209,7 @@ class Otppage extends Component {
                   <Grid key="healthx" item>
                     <img alt="Logo" src="/assets/images/HealthXLogo1x.png" height="25" width="100" />
                   </Grid>
-                  {APPNAME_PREFIX == "Tracie" && (
+                  {APPNAME_PREFIX === "Tracie" && (
                     <Grid key="silverfactory" item>
                       <img alt="Logo" src="/assets/images/silverfactory.jpeg" height="30" width="140" />
                     </Grid>

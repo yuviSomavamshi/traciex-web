@@ -39,7 +39,7 @@ const Results = ({ className, ramanReader, ...rest }) => {
   const [sortBy, setSetSortBy] = useState("createdAt");
 
   const createSortHandler = (property) => (event) => {
-    setOrder(order == "desc" ? "asc" : "desc");
+    setOrder(order === "desc" ? "asc" : "desc");
     setSetSortBy(property);
     rest.handleOrderChange(order);
     rest.handleSortByChange(sortBy);

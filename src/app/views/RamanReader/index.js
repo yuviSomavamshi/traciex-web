@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Box, Dialog, DialogTitle, Snackbar, Typography, DialogContent, Link } from "@material-ui/core";
+import { Container, Box, Dialog, DialogTitle, Snackbar, DialogContent } from "@material-ui/core";
 import Results from "./Results";
 
 import Toolbar from "../Toolbar/Toolbar";
@@ -35,14 +35,14 @@ class RamanReader extends Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.ramanReader.message != this.props.ramanReader.message) {
+    if (nextProps.ramanReader.message !== this.props.ramanReader.message) {
       this.setState({
         ...this.state,
         openSnackBar: true,
         message: nextProps.ramanReader.message,
         severity: nextProps.ramanReader.severity
       });
-      if (nextProps.ramanReader.severity == "success") {
+      if (nextProps.ramanReader.severity === "success") {
         setTimeout(() => {
           this.props.getRamanreaderCodesList("", 0, this.state.limit, this.state.order, this.state.sortBy);
         }, 3000);

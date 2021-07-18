@@ -10,7 +10,6 @@ import {
   OutlinedInput,
   InputLabel,
   IconButton,
-  Tooltip,
   Snackbar,
   Card
 } from "@material-ui/core";
@@ -110,8 +109,8 @@ class ResetPassword extends Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProp) {
-    if (nextProp.login.resetSuccess != null) {
-      if (nextProp.login.resetSuccess == true && this.state.password == this.state.confirmPassword) {
+    if (nextProp.login.resetSuccess !== null) {
+      if (nextProp.login.resetSuccess === true && this.state.password === this.state.confirmPassword) {
         localStorage.removeItem("reset-password-token");
         localStorage.removeItem("reset-password-email");
         history.push({
@@ -276,7 +275,7 @@ class ResetPassword extends Component {
                   <Grid key="healthx" item>
                     <img alt="Logo" src="/assets/images/HealthXLogo1x.png" height="25" width="100" />
                   </Grid>
-                  {APPNAME_PREFIX == "Tracie" && (
+                  {APPNAME_PREFIX === "Tracie" && (
                     <Grid key="silverfactory" item>
                       <img alt="Logo" src="/assets/images/silverfactory.jpeg" height="30" width="140" />
                     </Grid>

@@ -38,8 +38,8 @@ export const addCustomer = (payload) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: ADD_CUSTOMER,
-        message: res.status == 200 ? "Customer account created successfully" : res.data.message,
-        severity: res.status == 200 ? "success" : "error"
+        message: res.status === 200 ? "Customer account created successfully" : res.data.message,
+        severity: res.status === 200 ? "success" : "error"
       });
     })
     .catch((err) => {

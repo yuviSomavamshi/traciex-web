@@ -42,7 +42,7 @@ function ConfirmationDialogRaw(props) {
   }, [valueProp, open]);
 
   function handleEntering() {
-    if (radioGroupRef.current != null) {
+    if (radioGroupRef.current !== null) {
       radioGroupRef.current.focus();
     }
   }

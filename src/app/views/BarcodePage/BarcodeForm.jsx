@@ -25,7 +25,7 @@ class BarcodeForm extends Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.barCode.message != null && nextProps.barCode.severity != null) {
+    if (nextProps.barCode.message !== null && nextProps.barCode.severity !== null) {
       this.setState({
         ...this.state,
         openSnackBar: true,

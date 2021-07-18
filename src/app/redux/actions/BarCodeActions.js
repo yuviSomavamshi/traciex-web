@@ -44,7 +44,7 @@ export const deleteBarcode = (id) => {
         headers: headers
       })
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           dispatch({
             type: DELETE_BAR_CODE,
             message: res.data.message,
@@ -77,7 +77,7 @@ export const uploadBarcodes = (formData) => {
           type: UPLOAD_BARCODE,
           message: res.data.message,
           barcodeRes: res.data,
-          severity: res.status == 200 ? "success" : "error"
+          severity: res.status === 200 ? "success" : "error"
         });
       })
       .catch((err) => {

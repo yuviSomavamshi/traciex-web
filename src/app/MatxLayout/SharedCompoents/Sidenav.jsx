@@ -45,7 +45,7 @@ axios.interceptors.response.use(
             });
         } else {
           const token = localStorage.getItem("jwt_token");
-          if (token != null) {
+          if (token !== null) {
             localStorage.removeItem("jwt_token");
             localStorage.removeItem("refreshToken");
             alert("Your Session Has Expired, Please Login again");
@@ -55,7 +55,7 @@ axios.interceptors.response.use(
         }
       } else {
         const token = localStorage.getItem("jwt_token");
-        if (token != null) {
+        if (token !== null) {
           localStorage.removeItem("jwt_token");
           localStorage.removeItem("refreshToken");
           alert("Your Session Has Expired, Please Login again");

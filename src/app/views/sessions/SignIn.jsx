@@ -143,7 +143,7 @@ class SignIn extends Component {
           >
             <FormControl className="mb-16" variant="outlined" fullWidth>
               <InputLabel>Email</InputLabel>
-              <OutlinedInput id="outlined-adornment-password" type="email" name="email" value={email} onChange={this.handleChange} labelWidth={40} />
+              <OutlinedInput id="outlined-adornment-email" type="email" name="email" value={email} onChange={this.handleChange} labelWidth={40} />
             </FormControl>
             <FormControl variant="outlined" fullWidth>
               <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -200,7 +200,7 @@ class SignIn extends Component {
                   <Grid key="healthx" item>
                     <img alt="Logo" src="/assets/images/HealthXLogo1x.png" height="25" width="100" />
                   </Grid>
-                  {APPNAME_PREFIX == "Tracie" && (
+                  {APPNAME_PREFIX === "Tracie" && (
                     <Grid key="silverfactory" item>
                       <img alt="Logo" src="/assets/images/silverfactory.jpeg" height="30" width="140" />
                     </Grid>

@@ -67,8 +67,8 @@ class ForgotPassword extends Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProp) {
-    if (nextProp.login.success != null) {
-      if (nextProp.login.success == true) {
+    if (nextProp.login.success !== null) {
+      if (nextProp.login.success === true) {
         localStorage.setItem("reset-password-email", this.state.email);
         history.push({
           pathname: "/OTP-verification"
@@ -105,7 +105,7 @@ class ForgotPassword extends Component {
     let { classes, login } = this.props;
     let severity = success ? "success" : "error";
 
-    if (login.message == null || login.message.trim().length <= 0) openSnackBar = false;
+    if (login.message === null || login.message.trim().length <= 0) openSnackBar = false;
     return (
       <div className={classes.paper}>
         <Card
@@ -184,7 +184,7 @@ class ForgotPassword extends Component {
                     <img alt="Logo" src="/assets/images/HealthXLogo1x.png" height="25" width="100" />
                   </Grid>
 
-                  {APPNAME_PREFIX == "Tracie" && (
+                  {APPNAME_PREFIX === "Tracie" && (
                     <Grid key="silverfactory" item>
                       <img alt="Logo" src="/assets/images/silverfactory.jpeg" height="30" width="140" />
                     </Grid>

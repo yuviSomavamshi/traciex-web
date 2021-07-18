@@ -8,7 +8,6 @@ import {
   Box,
   Button,
   Card,
-  Chip,
   Table,
   TableBody,
   TableCell,
@@ -21,7 +20,6 @@ import {
   IconButton
 } from "@material-ui/core";
 import { Modal } from "antd";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
@@ -40,7 +38,7 @@ const Results = ({ className, barCode, ...rest }) => {
   const [sortBy, setSetSortBy] = useState("createdAt");
 
   const createSortHandler = (property) => (event) => {
-    setOrder(order == "desc" ? "asc" : "desc");
+    setOrder(order === "desc" ? "asc" : "desc");
     setSetSortBy(property);
     rest.handleOrderChange(order);
     rest.handleSortByChange(sortBy);
@@ -57,34 +55,6 @@ const Results = ({ className, barCode, ...rest }) => {
   const handleDeleteBarcode = (data) => {
     rest.handleDeleteBarcode(data);
     setOpenReports(!openReports);
-  };
-
-  const getStatusColor = (status) => {
-    let result = "";
-    if (status == 0) {
-      result = "grey";
-    } else if (status == 1) {
-      result = "green";
-    } else if (status == 2) {
-      result = "red";
-    } else {
-      result = "black";
-    }
-    return result;
-  };
-
-  const getStatus = (status) => {
-    let result = "";
-    if (status == 0) {
-      result = "Unassigned";
-    } else if (status == 1) {
-      result = "Assigned";
-    } else if (status == 2) {
-      result = "Scrapped";
-    } else {
-      result = "Unknown";
-    }
-    return result;
   };
 
   return (

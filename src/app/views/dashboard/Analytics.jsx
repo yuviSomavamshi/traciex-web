@@ -33,19 +33,6 @@ const PurpleSwitch = withStyles({
   track: {}
 })(SwitchMI);
 
-function convertToInternationalCurrencySystem(labelValue) {
-  // Nine Zeroes for Billions
-  return Math.abs(Number(labelValue)) >= 1.0e9
-    ? (Math.abs(Number(labelValue)) / 1.0e9).toFixed(2) + "B"
-    : // Six Zeroes for Millions
-    Math.abs(Number(labelValue)) >= 1.0e6
-    ? (Math.abs(Number(labelValue)) / 1.0e6).toFixed(2) + "M"
-    : // Three Zeroes for Thousands
-    Math.abs(Number(labelValue)) >= 1.0e3
-    ? (Math.abs(Number(labelValue)) / 1.0e3).toFixed(2) + "K"
-    : Math.abs(Number(labelValue));
-}
-
 class Dashboard1 extends Component {
   state = {
     lc: {},
@@ -159,18 +146,6 @@ class Dashboard1 extends Component {
     }
   };
 
-  componentDidMount() {
-    const [form] = Form.useForm();
-
-    form.setFieldsValue({
-      Picker: [moment().startOf("month"), moment()]
-    });
-
-    this.setState({
-      form
-    });
-  }
-
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.usage) {
       let stats = [];
@@ -228,12 +203,14 @@ class Dashboard1 extends Component {
       this.props.getCustomerCount();
     }
   }
+
   componentDidMount() {
     this.props.getCustomerCount();
     this.props.getLocationCount();
     this.props.getUsageStats(this.state.startDate, this.state.endDate, this.state.graphSwitch ? "customerId" : "location");
     this.props.getTestCount(this.state.startDate, this.state.endDate);
   }
+
   onSwitchChange = (name) => (event) => {
     this.setState({
       ...this.state,
@@ -283,14 +260,11 @@ class Dashboard1 extends Component {
   };
 
   onGraphSwitch = (checked) => {
-    console.log(checked ? "line" : "bar");
     this.setState({ graphToggle: checked, options: { ...this.state.options, type: checked ? "line" : "bar" } });
   };
 
   render() {
     let { lc, cc, tc } = this.props;
-    let authUser = JSON.parse(localStorage.getItem("auth_user"));
-    console.log(this.state.options, "--", this.state.graphToggle);
     return (
       <main>
         <div className="main__container">
@@ -401,7 +375,7 @@ class Dashboard1 extends Component {
                 <i className="fa fa-bar-chart" aria-hidden="true"></i>
               </div>
               {/* <Chart /> */}
-              {this.props.usage && this.props.usage.count.length != 0 ? (
+              {this.props.usage && this.props.usage.count.length !== 0 ? (
                 <ReactApexChart
                   options={this.state.options}
                   height="300"

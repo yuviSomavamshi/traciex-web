@@ -112,7 +112,7 @@ const Dropzone = (props) => {
       unsupportedFiles.splice(index3, 1);
       setUnsupportedFiles([...unsupportedFiles]);
     }
-    if (validFiles.length == 0) {
+    if (validFiles.length === 0) {
       props.setBtnVisible(false);
     }
   };

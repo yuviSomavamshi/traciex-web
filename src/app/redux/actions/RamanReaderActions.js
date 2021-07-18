@@ -44,7 +44,7 @@ export const deleteRamanreadercode = (id) => {
         headers: headers
       })
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           dispatch({
             type: DELETE_RAMANREADER_CODE,
             message: res.data.message,
@@ -76,7 +76,7 @@ export const uploadRamanreadercodes = (formData) => {
         dispatch({
           type: UPLOAD_RAMANREADER,
           message: res.data.message,
-          severity: res.status == 200 ? "success" : "error"
+          severity: res.status === 200 ? "success" : "error"
         });
       })
       .catch((err) => {
