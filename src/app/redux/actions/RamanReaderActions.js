@@ -5,28 +5,26 @@ export const DELETE_RAMANREADER_CODE = "DELETE_RAMANREADER_CODE";
 export const RAMANREADER_CODE_LOADING = "RAMANREADER_CODE_LOADING";
 export const UPLOAD_RAMANREADER = "UPLOAD_RAMANREADER";
 
-export const getRamanreaderCodesList =
-  (searchToken = "", page = 1, size = 10, order = "desc", sortBy = "createdAt") =>
-  (dispatch) => {
-    dispatch({
-      type: RAMANREADER_CODE_LOADING
-    });
-    const token = localStorage.getItem("jwt_token");
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + token
-    };
-    axios
-      .get(url + "/raman?token=" + searchToken + "&page=" + page + "&size=" + size + "&sortBy=" + sortBy + "&order=" + order, {
-        headers: headers
-      })
-      .then((res) => {
-        dispatch({
-          type: GET_RAMANREADER_CODES,
-          payload: res.data
-        });
-      });
+export const getRamanreaderCodesList = (searchToken = "", page = 1, size = 10, order = "desc", sortBy = "createdAt") => (dispatch) => {
+  dispatch({
+    type: RAMANREADER_CODE_LOADING
+  });
+  const token = localStorage.getItem("jwt_token");
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + token
   };
+  axios
+    .get(url + "/raman?token=" + searchToken + "&page=" + page + "&size=" + size + "&sortBy=" + sortBy + "&order=" + order, {
+      headers: headers
+    })
+    .then((res) => {
+      dispatch({
+        type: GET_RAMANREADER_CODES,
+        payload: res.data
+      });
+    });
+};
 export const deleteRamanreadercode = (id) => {
   return (dispatch) => {
     dispatch({

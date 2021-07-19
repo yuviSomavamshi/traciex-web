@@ -105,7 +105,7 @@ class ForgotPassword extends Component {
     let { classes, login } = this.props;
     let severity = success ? "success" : "error";
 
-    if (login.message === null || login.message.trim().length <= 0) openSnackBar = false;
+    if (login.message == null || login.message.trim().length <= 0) openSnackBar = false;
     return (
       <div className={classes.paper}>
         <Card

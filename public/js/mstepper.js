@@ -867,7 +867,7 @@ if (typeof Object.assign !== 'function') {
       // .length of function is 2
       'use strict';
 
-      if (target === null) {
+      if (target == null) {
         // TypeError if undefined or null
         throw new TypeError('Cannot convert undefined or null to object');
       }

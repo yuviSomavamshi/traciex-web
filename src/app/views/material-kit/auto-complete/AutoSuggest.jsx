@@ -147,14 +147,12 @@ export default function IntegrationAutosuggest() {
     setSuggestions([]);
   };
 
-  const handleChange =
-    (name) =>
-    (event, { newValue }) => {
-      setState({
-        ...state,
-        [name]: newValue
-      });
-    };
+  const handleChange = (name) => (event, { newValue }) => {
+    setState({
+      ...state,
+      [name]: newValue
+    });
+  };
 
   const autosuggestProps = {
     renderInputComponent,

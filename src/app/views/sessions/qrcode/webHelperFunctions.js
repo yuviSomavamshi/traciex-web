@@ -3,7 +3,7 @@ import { base } from "../../../Constants";
 import moment from "moment";
 import io from "socket.io-client";
 
-var socket;
+var socket = null;
 
 export const getTimeInFormat = (time) => {
   if (time === "") {
@@ -20,14 +20,6 @@ export const getDateTimeInFormat = (time) => {
   const newTime = moment(time).format(webConstants.DATE_TIME_FORMAT);
   return newTime;
 };
-
-// export const showToast = ({ text, type }) => {
-//   Toast.show({
-//     text: text,
-//     buttonText: "Done",
-//     type: type
-//   });
-// };
 
 export const getUniqueId = () => {
   const id = JSON.stringify(Date.now());
@@ -64,39 +56,25 @@ export const getLocalData = (key) => {
 export const getUserType = (item) => {
   let userId = getLocalData(webConstants.USER_ID);
   if (item.userId === userId) {
-    // console.log(
-    //   'UserType => ',
-    //   webConstants.OWNER + ' User => ' + item.chat[0].chatName,
-    // );
     return webConstants.OWNER;
   } else if (item.chatId === userId) {
-    // console.log(
-    //   'UserType => ',
-    //   webConstants.FRIEND + ' User => ' + item.chat[0].userName,
-    // );
     return webConstants.FRIEND;
   }
 };
 
 export const getUserTypeChatRoom = (item, userId) => {
   if (item.userId === userId) {
-    // console.log(
-    //   'UserType => ',
-    //   webConstants.OWNER + ' User => ' + JSON.stringify(item),
-    // );
     return webConstants.OWNER;
   } else if (item.chatId === userId) {
-    // console.log(
-    //   'UserType => ',
-    //   webConstants.FRIEND + ' User => ' + JSON.stringify(item),
-    // );
     return webConstants.FRIEND;
   }
 };
 
 export function getSocket() {
-  if (socket === null) {
+  debugger;
+  if (socket == null) {
     socket = io.connect(base, { transports: ["websocket"] });
+    console.log(socket);
   }
   return socket;
 }

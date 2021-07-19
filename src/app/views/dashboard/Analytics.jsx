@@ -386,7 +386,7 @@ class Dashboard1 extends Component {
               ) : (
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
                   <div>
-                    <img style={{ opacity: "0.5" }} src={barChart} width="100" />
+                    <img alt="" style={{ opacity: "0.5" }} src={barChart} width="100" />
                   </div>
                   <Typography variant="body2" color="secondary">
                     No data found!

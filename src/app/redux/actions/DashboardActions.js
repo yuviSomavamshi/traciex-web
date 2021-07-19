@@ -51,30 +51,28 @@ export const getTestCount = (startDate, endDate) => (dispatch) => {
     });
 };
 
-export const getUsageStats =
-  (startDate, endDate, type = "customerId") =>
-  (dispatch) => {
-    if (startDate && endDate)
-      axios
-        .get(
-          url +
-            "/bc/dashboard/breathalyzer-usage-stats?startDate=" +
-            startDate.format("YYYY-MM-DD") +
-            "&endDate=" +
-            endDate.format("YYYY-MM-DD") +
-            "&type=" +
-            type,
-          {
-            headers: headers
-          }
-        )
-        .then((res) => {
-          dispatch({
-            type: GET_DASHBOARD_AVG,
-            payload: res.data
-          });
+export const getUsageStats = (startDate, endDate, type = "customerId") => (dispatch) => {
+  if (startDate && endDate)
+    axios
+      .get(
+        url +
+          "/bc/dashboard/breathalyzer-usage-stats?startDate=" +
+          startDate.format("YYYY-MM-DD") +
+          "&endDate=" +
+          endDate.format("YYYY-MM-DD") +
+          "&type=" +
+          type,
+        {
+          headers: headers
+        }
+      )
+      .then((res) => {
+        dispatch({
+          type: GET_DASHBOARD_AVG,
+          payload: res.data
         });
-  };
+      });
+};
 
 export function changeColor(checked) {
   let color = "";

@@ -12,7 +12,7 @@ import { APPNAME } from "../../../Constants";
 var socket = getSocket();
 
 var username = getLocalData(webConstants.WEB_TIMER_UUID);
-if (username === null) {
+if (username == null) {
   username = "WEB-" + uuid();
   storeLocalData(webConstants.WEB_TIMER_UUID, username);
 }
@@ -116,7 +116,7 @@ const ScanCodeView = ({ params }) => {
                 }}
               >
                 <div className={classes.textStyle}>
-                  <Typography variant={"h4"} component={"h4"} style={{ marginBottom: "5%" }}>
+                  <Typography variant={"h5"} component={"h5"} style={{ marginBottom: "5%" }}>
                     To use {APPNAME} Web Timer on your computer :
                   </Typography>
                   <Typography variant={"h5"} className={classes.textPointsStyle}>

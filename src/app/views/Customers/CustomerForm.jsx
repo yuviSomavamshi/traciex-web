@@ -32,7 +32,7 @@ class CustomerForm extends Component {
   };
 
   componentDidMount() {
-    if (this.state.password === null) {
+    if (this.state.password == null) {
       this.setState({
         password: this.generatePassword()
       });

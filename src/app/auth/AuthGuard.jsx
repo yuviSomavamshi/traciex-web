@@ -16,7 +16,7 @@ class AuthGuard extends Component {
 
   componentDidMount() {
     let user = localStorage.getItem("auth_user");
-    if (user === null) {
+    if (user == null) {
     } else {
       this.redirectRoute(this.props);
     }
@@ -24,7 +24,7 @@ class AuthGuard extends Component {
 
   componentDidUpdate() {
     let user = localStorage.getItem("auth_user");
-    if (user === null) {
+    if (user == null) {
       this.props.history.push({
         pathname: "/login"
       });
