@@ -5,26 +5,28 @@ export const DELETE_BAR_CODE = "DELETE_BAR_CODE";
 export const BAR_CODE_LOADING = "BAR_CODE_LOADING";
 export const UPLOAD_BARCODE = "UPLOAD_BARCODE";
 
-export const getBarCodesList = (searchToken = "", page = 1, size = 10, order = "desc", sortBy = "createdAt") => (dispatch) => {
-  dispatch({
-    type: BAR_CODE_LOADING
-  });
-  const token = localStorage.getItem("jwt_token");
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: "Bearer " + token
-  };
-  axios
-    .get(url + "/barcode?token=" + searchToken + "&page=" + page + "&size=" + size + "&sortBy=" + sortBy + "&order=" + order, {
-      headers: headers
-    })
-    .then((res) => {
-      dispatch({
-        type: GET_BAR_CODES,
-        payload: res.data
-      });
+export const getBarCodesList =
+  (searchToken = "", page = 1, size = 10, order = "desc", sortBy = "createdAt") =>
+  (dispatch) => {
+    dispatch({
+      type: BAR_CODE_LOADING
     });
-};
+    const token = localStorage.getItem("jwt_token");
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + token
+    };
+    axios
+      .get(url + "/barcode?token=" + searchToken + "&page=" + page + "&size=" + size + "&sortBy=" + sortBy + "&order=" + order, {
+        headers: headers
+      })
+      .then((res) => {
+        dispatch({
+          type: GET_BAR_CODES,
+          payload: res.data
+        });
+      });
+  };
 export const deleteBarcode = (id) => {
   return (dispatch) => {
     dispatch({
