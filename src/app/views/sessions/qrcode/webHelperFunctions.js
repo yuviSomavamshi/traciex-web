@@ -71,7 +71,6 @@ export const getUserTypeChatRoom = (item, userId) => {
 };
 
 export function getSocket() {
-  debugger;
   if (socket == null) {
     socket = io.connect(base, { transports: ["websocket"] });
     console.log(socket);
