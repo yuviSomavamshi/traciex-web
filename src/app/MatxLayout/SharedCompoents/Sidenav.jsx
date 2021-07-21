@@ -18,54 +18,50 @@ axios.interceptors.response.use(
 
     // Prevent infinite loops
     if (error.response && error.response.status === 401 && originalRequest.url === url + "/accounts/refresh-token") {
+      alert("Your Session Has Expired, Please Login again");
+      console.log("Refresh token not available.");
       window.location.href = "/login";
       return Promise.reject(error);
     }
 
     if (error.response && error.response.status === 401 && error.response.statusText === "Unauthorized") {
       const token = localStorage.getItem("jwt_token");
-      const refreshToken = localStorage.getItem("refreshToken");
       if (token) {
-        const tokenParts = JSON.parse(atob(token.split(".")[1]));
-
-        // exp date in token is expressed in seconds, while now() returns milliseconds:
-        const now = Math.ceil(Date.now() / 1000);
-
-        if (tokenParts.exp < now && tokenParts.exp + 900 > now) {
-          return axios
-            .post(url + "/accounts/refresh-token", {}, { headers: { Cookie: refreshToken } })
-            .then((response) => {
-              localStorage.setItem("jwt_token", response.data.jwtToken);
-              localStorage.setItem("refreshToken", response.data.refreshToken);
-              originalRequest.headers["Authorization"] = "Bearer " + response.data.jwtToken;
-              return axios(originalRequest);
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        } else {
-          const token = localStorage.getItem("jwt_token");
-          if (token !== null) {
-            localStorage.removeItem("jwt_token");
-            localStorage.removeItem("refreshToken");
-            alert("Your Session Has Expired, Please Login again");
-            console.log("Refresh token is expired", tokenParts.exp, now);
-          }
-          window.location.href = "/login";
-        }
+        const refreshToken = localStorage.getItem("refreshToken");
+        const csrfToken = localStorage.getItem("csrfToken");
+        return axios
+          .post(
+            url + "/accounts/refresh-token",
+            {
+              refreshToken
+            },
+            {
+              withCredentials: true,
+              headers: {
+                "X-CSRF-Token": csrfToken
+              }
+            }
+          )
+          .then((response) => {
+            localStorage.setItem("jwt_token", response.data.jwtToken);
+            localStorage.setItem("refreshToken", response.data.refreshToken);
+            localStorage.setItem("csrfToken", response.data.csrfToken);
+            originalRequest.headers["Authorization"] = "Bearer " + response.data.jwtToken;
+            originalRequest.headers["Cookie"] = "refreshToken=" + response.data.refreshToken;
+            originalRequest.headers["X-CSRF-Token"] = response.data.csrfToken;
+            return axios(originalRequest);
+          });
       } else {
         const token = localStorage.getItem("jwt_token");
         if (token !== null) {
           localStorage.removeItem("jwt_token");
           localStorage.removeItem("refreshToken");
-          alert("Your Session Has Expired, Please Login again");
         }
+        alert("Your Session Has Expired, Please Login again");
         console.log("Refresh token not available.");
         window.location.href = "/login";
       }
     }
-
-    // specific error handling done elsewhere
     return Promise.reject(error);
   }
 );

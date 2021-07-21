@@ -90,10 +90,8 @@ class JwtAuthService {
       localStorage.setItem("csrfToken", csrfToken);
       axios.interceptors.request.use(
         (config) => {
-          const token = localStorage.getItem("jwt_token");
-          config.headers["Authorization"] = "Bearer " + token;
-          const csrfToken = localStorage.getItem("csrfToken");
-          config.headers["X-CSRF-Token"] = csrfToken;
+          config.headers["Authorization"] = "Bearer " + localStorage.getItem("jwt_token");
+          config.headers["X-CSRF-Token"] = localStorage.getItem("csrfToken");
           return config;
         },
         (error) => {

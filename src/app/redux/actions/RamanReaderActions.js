@@ -40,7 +40,7 @@ export const deleteRamanreadercode = (id) => {
       Authorization: "Bearer " + token
     };
     axios
-      .delete(url + "/raman/" + id, {
+      .post(url + "/raman/" + id + "/delete", {
         headers: headers
       })
       .then((res) => {
