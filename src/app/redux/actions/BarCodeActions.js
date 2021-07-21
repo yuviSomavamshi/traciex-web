@@ -57,6 +57,13 @@ export const deleteBarcode = (id) => {
             severity: "error"
           });
         }
+      })
+      .catch((err) => {
+        dispatch({
+          type: DELETE_BAR_CODE,
+          message: err.response.data.message,
+          severity: "error"
+        });
       });
   };
 };
