@@ -40,7 +40,7 @@ class CustomerForm extends Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.customers.message !== null && nextProps.customers.severity !== null) {
+    if (nextProps.customers.message != null && nextProps.customers.severity != null) {
       this.setState({
         ...this.state,
         openSnackBar: true,

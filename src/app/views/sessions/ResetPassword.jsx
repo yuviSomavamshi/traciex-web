@@ -109,7 +109,7 @@ class ResetPassword extends Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProp) {
-    if (nextProp.login.resetSuccess !== null) {
+    if (nextProp.login.resetSuccess != null) {
       if (nextProp.login.resetSuccess === true && this.state.password === this.state.confirmPassword) {
         localStorage.removeItem("reset-password-token");
         localStorage.removeItem("reset-password-email");

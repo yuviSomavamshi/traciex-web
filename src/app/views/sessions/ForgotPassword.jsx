@@ -67,7 +67,7 @@ class ForgotPassword extends Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProp) {
-    if (nextProp.login.success !== null) {
+    if (nextProp.login.success != null) {
       if (nextProp.login.success === true) {
         localStorage.setItem("reset-password-email", this.state.email);
         history.push({

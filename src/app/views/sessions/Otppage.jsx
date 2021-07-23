@@ -72,7 +72,7 @@ class Otppage extends Component {
   };
 
   UNSAFE_componentWillReceiveProps(nextProp) {
-    if (nextProp.login.otpSuccess !== null) {
+    if (nextProp.login.otpSuccess != null) {
       if (nextProp.login.otpSuccess === true) {
         localStorage.setItem("reset-password-token", this.state.token);
         history.push({
