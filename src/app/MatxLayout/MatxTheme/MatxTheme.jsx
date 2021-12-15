@@ -3,7 +3,6 @@ import { MuiThemeProvider } from "@material-ui/core";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import { setLayoutSettings } from "app/redux/actions/LayoutActions";
-// import cssVars from "css-vars-ponyfill";
 
 import { Helmet } from "react-helmet";
 
