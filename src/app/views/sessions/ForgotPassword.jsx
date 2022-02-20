@@ -4,7 +4,7 @@ import MuiAlert from "@material-ui/lab/Alert";
 import { ValidatorForm } from "react-material-ui-form-validator";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-import { withRouter } from "react-router-dom";
+import withRouter from "app/WithRouter";
 import { withStyles } from "@material-ui/styles";
 import { forgotPassword } from "../../redux/actions/LoginActions";
 import history from "history.js";

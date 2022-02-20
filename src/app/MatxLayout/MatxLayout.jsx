@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { MatxLayouts } from "./index";
 import { PropTypes } from "prop-types";
-import { withRouter } from "react-router-dom";
+import withRouter from "app/WithRouter";
 import { matchRoutes } from "react-router-config";
 import { connect } from "react-redux";
 import AppContext from "app/appContext";

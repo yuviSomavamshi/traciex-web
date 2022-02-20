@@ -5,7 +5,7 @@ import { Icon, withStyles, MenuItem, Tooltip, IconButton, MuiThemeProvider } fro
 import { connect } from "react-redux";
 import { setLayoutSettings, setDefaultSettings } from "app/redux/actions/LayoutActions";
 import { logoutUser } from "app/redux/actions/UserActions";
-import { withRouter } from "react-router-dom";
+import withRouter from "app/WithRouter";
 import { MatxMenu } from "matx";
 import Sidenav from "../SharedCompoents/Sidenav";
 import Brand from "../SharedCompoents/Brand";

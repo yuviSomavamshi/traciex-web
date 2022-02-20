@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Scrollbar from "react-perfect-scrollbar";
-import { withRouter } from "react-router-dom";
+import withRouter from "app/WithRouter";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 

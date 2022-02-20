@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { withRouter } from "react-router-dom";
+import withRouter from "app/WithRouter";
 import { connect } from "react-redux";
 import AppContext from "app/appContext";
 

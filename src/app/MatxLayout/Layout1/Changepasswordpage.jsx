@@ -16,7 +16,7 @@ import { green } from "@material-ui/core/colors";
 import MuiAlert from "@material-ui/lab/Alert";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-import { withRouter } from "react-router-dom";
+import withRouter from "app/WithRouter";
 import { changePassword } from "../../redux/actions/LoginActions";
 import { withStyles } from "@material-ui/styles";
 import { ValidatorForm } from "react-material-ui-form-validator";

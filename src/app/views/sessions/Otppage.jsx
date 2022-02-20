@@ -4,7 +4,7 @@ import { Button, FormControl, Link, Grid, Typography, Snackbar, Card } from "@ma
 import MuiAlert from "@material-ui/lab/Alert";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
-import { withRouter } from "react-router-dom";
+import withRouter from "app/WithRouter";
 import { otpVerification, forgotPassword } from "../../redux/actions/LoginActions";
 import { withStyles } from "@material-ui/styles";
 import { ValidatorForm } from "react-material-ui-form-validator";

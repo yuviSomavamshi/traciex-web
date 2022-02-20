@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withStyles, Icon } from "@material-ui/core";
 import TouchRipple from "@material-ui/core/ButtonBase";
-import { withRouter } from "react-router-dom";
+import withRouter from "app/WithRouter";
 import { classList } from "utils";
 
 const styles = (theme) => {
